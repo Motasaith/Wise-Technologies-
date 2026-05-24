@@ -121,8 +121,6 @@ const StyledWrapper = styled.div`
     box-shadow:
       0 0 0 2.5px #1a1a1a,
       3px 4px 0 2.5px rgba(26, 26, 26, 0.22);
-    transform: rotate(-0.7deg);
-    filter: url(#sketchy);
   }
 
   .theme-switch__container::before {
@@ -211,7 +209,6 @@ const StyledWrapper = styled.div`
     opacity: 1;
     transition: opacity var(--transition);
     pointer-events: none;
-    filter: url(#sketchy-sm);
   }
 
   .theme-switch__checkbox:checked
@@ -242,9 +239,6 @@ const StyledWrapper = styled.div`
       0.062em 0.062em 0.062em 0em rgba(254, 255, 239, 0.61) inset,
       0em -0.062em 0.062em 0em #a1872a inset,
       0.1em 0.13em 0 0.04em #1a1a1a;
-    filter: url(#sketchy-sm)
-      drop-shadow(0.062em 0.125em 0.125em rgba(0, 0, 0, 0.25))
-      drop-shadow(0em 0.062em 0.125em rgba(0, 0, 0, 0.25));
     overflow: hidden;
     transition: var(--transition);
     transform: scale(1);
@@ -283,7 +277,6 @@ const StyledWrapper = styled.div`
     background-color: var(--spot-color);
     box-shadow: 0em 0.0312em 0.062em rgba(0, 0, 0, 0.25) inset;
     transition: background-color 0.3s ease;
-    filter: url(#sketchy-sm);
   }
 
   .theme-switch__spot:nth-of-type(2) {
@@ -327,7 +320,6 @@ const StyledWrapper = styled.div`
       4em -0.625em var(--back-clouds-color),
       4.125em -2.125em 0 0.437em var(--back-clouds-color);
     transition: 0.5s cubic-bezier(0, -0.02, 0.4, 1.25);
-    filter: url(#sketchy-sm);
   }
 
   .theme-switch__stars-container {

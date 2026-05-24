@@ -74,35 +74,29 @@ export default function Header() {
                 {item.type === 'link' ? (
                   <Link
                     to={item.to!}
-                    className="relative text-[10px] sm:text-xs md:text-sm font-medium transition-colors duration-300 whitespace-nowrap group"
+                    className="group relative block overflow-hidden text-[10px] sm:text-xs md:text-sm font-medium whitespace-nowrap py-1"
                     style={{ color: 'var(--text-muted)' }}
                   >
-                    <span className="relative z-10 group-hover:text-accent transition-colors">
-                      {item.label}
+                    <span className="relative block transition-transform duration-300 ease-out group-hover:-translate-y-[3px]">
+                      <span className="block transition-colors duration-300 group-hover:text-accent">
+                        {item.label}
+                      </span>
                     </span>
-                    <motion.span
-                      className="absolute -bottom-1 left-0 h-[2px] bg-accent"
-                      initial={{ width: 0 }}
-                      whileHover={{ width: '100%' }}
-                      transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                    />
+                    <span className="absolute bottom-0 left-1/2 h-[2px] w-full bg-accent origin-center transition-transform duration-300 ease-out scale-x-0 group-hover:scale-x-100 -translate-x-1/2" />
                   </Link>
                 ) : (
                   <a
                     href={item.href}
                     onClick={(e) => handleAnchorClick(e, item.href)}
-                    className="relative text-[10px] sm:text-xs md:text-sm font-medium transition-colors duration-300 whitespace-nowrap group"
+                    className="group relative block overflow-hidden text-[10px] sm:text-xs md:text-sm font-medium whitespace-nowrap py-1"
                     style={{ color: 'var(--text-muted)' }}
                   >
-                    <span className="relative z-10 group-hover:text-accent transition-colors">
-                      {item.label}
+                    <span className="relative block transition-transform duration-300 ease-out group-hover:-translate-y-[3px]">
+                      <span className="block transition-colors duration-300 group-hover:text-accent">
+                        {item.label}
+                      </span>
                     </span>
-                    <motion.span
-                      className="absolute -bottom-1 left-0 h-[2px] bg-accent"
-                      initial={{ width: 0 }}
-                      whileHover={{ width: '100%' }}
-                      transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                    />
+                    <span className="absolute bottom-0 left-1/2 h-[2px] w-full bg-accent origin-center transition-transform duration-300 ease-out scale-x-0 group-hover:scale-x-100 -translate-x-1/2" />
                   </a>
                 )}
               </motion.div>
