@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 120" width="400" height="120">
+  <!-- Wise -->
+  <text x="0" y="45" font-family="'Segoe UI', Arial, sans-serif" font-size="42" font-weight="700" fill="#333333">Wise</text>
+  <!-- Technologies with blue o -->
+  <text x="0" y="85" font-family="'Segoe UI', Arial, sans-serif" font-size="42" font-weight="700" fill="#333333">Techn</text>
+  <text x="108" y="85" font-family="'Segoe UI', Arial, sans-serif" font-size="42" font-weight="700" fill="#0066CC">o</text>
+  <text x="132" y="85" font-family="'Segoe UI', Arial, sans-serif" font-size="42" font-weight="700" fill="#333333">logies</text>
+  <!-- Tagline -->
+  <text x="2" y="110" font-family="'Brush Script MT', 'Segoe Script', cursive" font-size="22" font-style="italic" fill="#666666">A Web Solution Provider</text>
+</svg>
