@@ -1,21 +1,41 @@
 import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 import Logo from '../components/Logo'
+import { useTheme } from '../context/ThemeContext'
 
 export default function Hero() {
+  const { theme } = useTheme()
+  const isDark = theme === 'dark'
+
   return (
     <section className="h-screen pt-16 pb-4 px-4 md:pt-20 md:pb-6 md:px-6 relative">
       <div className="relative w-full h-full rounded-2xl md:rounded-[2rem] overflow-hidden sketch-border">
-        {/* Background Image - Software House Theme */}
         <img
-          src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1920&q=80"
+          src={
+            isDark
+              ? 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1920&q=80'
+              : 'https://images.unsplash.com/photo-1497215728101-856f4ea42174?w=1920&q=80'
+          }
           alt="Team collaboration"
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover transition-opacity duration-700"
         />
 
-        {/* Vibrant gradient overlays */}
-        <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/40 to-accent/10" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/50" />
+        <div
+          className="absolute inset-0 transition-opacity duration-700"
+          style={{
+            background: isDark
+              ? 'linear-gradient(to bottom right, rgba(0,0,0,0.7), rgba(0,0,0,0.4), rgba(0,212,255,0.1))'
+              : 'linear-gradient(to bottom right, rgba(255,255,255,0.3), rgba(255,255,255,0.1), rgba(0,212,255,0.05))',
+          }}
+        />
+        <div
+          className="absolute inset-0 transition-opacity duration-700"
+          style={{
+            background: isDark
+              ? 'linear-gradient(to top, rgba(0,0,0,1), transparent, rgba(0,0,0,0.5))'
+              : 'linear-gradient(to top, rgba(0,0,0,0.6), transparent, rgba(0,0,0,0.2))',
+          }}
+        />
 
         <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10 z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-end">
