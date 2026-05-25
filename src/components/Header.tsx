@@ -43,7 +43,7 @@ export default function Header() {
       className="fixed top-0 left-0 right-0 z-50 px-4 md:px-8 py-3 md:py-4 animate-slide-down"
     >
       <div
-        className="max-w-7xl mx-auto sketch-border bg-white/90 backdrop-blur-sm px-4 md:px-6 py-2 transition-shadow duration-300"
+        className="max-w-6xl mx-auto sketch-border bg-white/90 backdrop-blur-sm px-4 md:px-6 py-2 transition-shadow duration-300"
         style={{
           boxShadow: scrolled ? '5px 5px 0px rgba(74,74,74,0.15)' : '5px 5px 0px rgba(74,74,74,0.08)',
         }}

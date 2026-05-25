@@ -128,7 +128,7 @@ export default function HeroSketch() {
       </motion.p>
 
       {/* Main content grid */}
-      <div className="relative z-10 min-h-screen flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-16 px-6 md:px-12 lg:px-20 pt-32 pb-12">
+      <div className="relative z-10 min-h-screen flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-16 px-6 md:px-12 lg:px-20 pt-32 pb-12 max-w-7xl mx-auto">
         {/* Left: Sketch text + tagline */}
         <motion.div
           initial={{ opacity: 0, x: -40 }}
