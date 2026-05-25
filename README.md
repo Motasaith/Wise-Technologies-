@@ -1,73 +1,59 @@
-# React + TypeScript + Vite
+# Wise Technologies — A Web Solution Provider
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, sketchbook-styled website for **Wise Technologies**, a software house based in Rahim Yar Khan, Pakistan. Built with **Next.js 14**, **React 18**, **Tailwind CSS v4**, and **Framer Motion**.
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+| Technology | Version | Purpose |
+|------------|---------|---------|
+| Next.js | 14.2.35 | React framework with App Router |
+| React | 18.3.1 | UI library |
+| TypeScript | ~5.6 | Type safety |
+| Tailwind CSS | v4.3.0 | Utility-first styling |
+| Framer Motion | 12.4.0 | Animations & scroll effects |
+| Lucide React | latest | Icons |
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Sketchbook Design** — Warm sepia palette with hand-drawn borders, paper lines, and doodle decorations
+- **Floating Tech Icons** — Animated laptop, terminal, code brackets, gear, cloud, database, WiFi, and cursor icons in the hero
+- **Scroll Animations** — Framer Motion `useInView` triggers for cards, text, and dividers
+- **Sticky Note Cards** — Colorful post-it style service cards with hover effects
+- **Responsive Layout** — Mobile-first with hidden spiral binding on small screens
+- **Static Export** — Built for deployment to any static host
 
-## Expanding the ESLint configuration
+## Project Structure
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+app/
+  layout.tsx          # Root layout with Google Fonts (Kalam, Caveat, Instrument Serif)
+  page.tsx            # Home page composition
+  globals.css         # Tailwind v4 + custom CSS variables
+  blog/               # Blog page
+  services/           # Services page
+src/
+  sections/           # Page sections (HeroSketch, About, Features, etc.)
+  components/         # Reusable components (Header, Logo, etc.)
+  page-content/       # Page-specific content (Blog.tsx, Services.tsx)
+public/
+  hero_section.mp4    # Hero background video
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Development
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+npm run dev          # Dev server on http://localhost:3000
+npm run build        # Static export to dist/
 ```
+
+## Design Notes
+
+- **Fonts**: Kalam (handwriting), Caveat (cursive notes), Instrument Serif (headings)
+- **Colors**: Warm paper `#F5F0E6`, ink `#2C2C2C`, highlight yellow `#ffeb3b`, accent red `#e74c3c`
+- **Borders**: `sketch-border` class creates hand-drawn wobbly borders via CSS
+- **Animations**: All scroll-triggered animations use `once: true` to prevent re-triggering
+
+## License
+
+© 2026 Wise Technologies RYK. All Rights Reserved.

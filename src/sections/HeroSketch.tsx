@@ -22,59 +22,99 @@ const SpiralBinding = () => (
   </svg>
 )
 
-const DoodleArrow = ({ className = '' }: { className?: string }) => (
-  <svg className={`w-12 h-12 ${className}`} viewBox="0 0 48 48" fill="none">
-    <path d="M8 24 Q 20 10, 36 20 T 40 36" stroke="#4A4A4A" strokeWidth="1.5" strokeDasharray="3 2" fill="none" opacity="0.5" />
-    <polygon points="36,32 44,36 36,40" fill="#4A4A4A" opacity="0.5" />
+/* Floating tech doodles */
+const FloatingLaptop = ({ className = '' }: { className?: string }) => (
+  <svg className={`w-10 h-10 ${className}`} viewBox="0 0 40 40" fill="none">
+    <rect x="4" y="8" width="32" height="22" rx="2" stroke="#4A4A4A" strokeWidth="1.5" strokeDasharray="3 2" fill="none" opacity="0.5" />
+    <rect x="8" y="12" width="24" height="14" rx="1" stroke="#4A4A4A" strokeWidth="1" strokeDasharray="2 2" fill="none" opacity="0.3" />
+    <path d="M2 32 L38 32 L36 36 L4 36 Z" stroke="#4A4A4A" strokeWidth="1.5" strokeDasharray="3 2" fill="none" opacity="0.5" />
+    <circle cx="20" cy="34" r="1.5" fill="#4A4A4A" opacity="0.4" />
   </svg>
 )
 
-const DoodleStar = ({ className = '' }: { className?: string }) => (
+const FloatingTerminal = ({ className = '' }: { className?: string }) => (
+  <svg className={`w-10 h-10 ${className}`} viewBox="0 0 40 40" fill="none">
+    <rect x="4" y="4" width="32" height="32" rx="3" stroke="#4A4A4A" strokeWidth="1.5" strokeDasharray="3 2" fill="none" opacity="0.5" />
+    <rect x="4" y="10" width="32" height="4" stroke="#4A4A4A" strokeWidth="1" strokeDasharray="2 2" fill="none" opacity="0.3" />
+    <circle cx="8" cy="8" r="1" fill="#4A4A4A" opacity="0.4" />
+    <circle cx="12" cy="8" r="1" fill="#4A4A4A" opacity="0.4" />
+    <circle cx="16" cy="8" r="1" fill="#4A4A4A" opacity="0.4" />
+    <text x="8" y="26" fontSize="8" fill="#4A4A4A" opacity="0.5" fontFamily="monospace">>_</text>
+  </svg>
+)
+
+const FloatingCode = ({ className = '' }: { className?: string }) => (
+  <svg className={`w-10 h-10 ${className}`} viewBox="0 0 40 40" fill="none">
+    <path d="M12 12 L6 20 L12 28" stroke="#4A4A4A" strokeWidth="1.5" strokeDasharray="3 2" fill="none" opacity="0.5" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M28 12 L34 20 L28 28" stroke="#4A4A4A" strokeWidth="1.5" strokeDasharray="3 2" fill="none" opacity="0.5" strokeLinecap="round" strokeLinejoin="round" />
+    <line x1="16" y1="32" x2="24" y2="8" stroke="#4A4A4A" strokeWidth="1.5" strokeDasharray="2 2" opacity="0.4" />
+  </svg>
+)
+
+const FloatingGear = ({ className = '' }: { className?: string }) => (
+  <svg className={`w-10 h-10 ${className}`} viewBox="0 0 40 40" fill="none">
+    <circle cx="20" cy="20" r="6" stroke="#4A4A4A" strokeWidth="1.5" strokeDasharray="3 2" fill="none" opacity="0.5" />
+    <circle cx="20" cy="20" r="2" stroke="#4A4A4A" strokeWidth="1" fill="none" opacity="0.4" />
+    {[0, 45, 90, 135, 180, 225, 270, 315].map((angle) => {
+      const rad = (angle * Math.PI) / 180
+      const x1 = 20 + Math.cos(rad) * 10
+      const y1 = 20 + Math.sin(rad) * 10
+      const x2 = 20 + Math.cos(rad) * 14
+      const y2 = 20 + Math.sin(rad) * 14
+      return (
+        <line key={angle} x1={x1} y1={y1} x2={x2} y2={y2} stroke="#4A4A4A" strokeWidth="1.5" strokeDasharray="2 2" opacity="0.5" />
+      )
+    })}
+  </svg>
+)
+
+const FloatingCloud = ({ className = '' }: { className?: string }) => (
+  <svg className={`w-10 h-10 ${className}`} viewBox="0 0 40 40" fill="none">
+    <path d="M10 26 Q6 26 6 22 Q6 18 10 18 Q10 12 16 12 Q20 8 26 12 Q32 10 34 16 Q38 16 38 20 Q38 24 34 24 Q34 28 28 28 L10 26" stroke="#4A4A4A" strokeWidth="1.5" strokeDasharray="3 2" fill="none" opacity="0.5" strokeLinecap="round" />
+  </svg>
+)
+
+const FloatingDatabase = ({ className = '' }: { className?: string }) => (
+  <svg className={`w-10 h-10 ${className}`} viewBox="0 0 40 40" fill="none">
+    <ellipse cx="20" cy="10" rx="12" ry="4" stroke="#4A4A4A" strokeWidth="1.5" strokeDasharray="3 2" fill="none" opacity="0.5" />
+    <path d="M8 10 L8 28 Q8 32 20 32 Q32 32 32 28 L32 10" stroke="#4A4A4A" strokeWidth="1.5" strokeDasharray="3 2" fill="none" opacity="0.5" />
+    <path d="M8 18 Q8 22 20 22 Q32 22 32 18" stroke="#4A4A4A" strokeWidth="1" strokeDasharray="2 2" fill="none" opacity="0.4" />
+  </svg>
+)
+
+const FloatingWifi = ({ className = '' }: { className?: string }) => (
+  <svg className={`w-10 h-10 ${className}`} viewBox="0 0 40 40" fill="none">
+    <path d="M8 16 Q20 6 32 16" stroke="#4A4A4A" strokeWidth="1.5" strokeDasharray="3 2" fill="none" opacity="0.5" strokeLinecap="round" />
+    <path d="M12 20 Q20 14 28 20" stroke="#4A4A4A" strokeWidth="1.5" strokeDasharray="3 2" fill="none" opacity="0.5" strokeLinecap="round" />
+    <path d="M16 24 Q20 20 24 24" stroke="#4A4A4A" strokeWidth="1.5" strokeDasharray="3 2" fill="none" opacity="0.5" strokeLinecap="round" />
+    <circle cx="20" cy="28" r="2" stroke="#4A4A4A" strokeWidth="1" fill="none" opacity="0.4" />
+  </svg>
+)
+
+const FloatingCursor = ({ className = '' }: { className?: string }) => (
   <svg className={`w-8 h-8 ${className}`} viewBox="0 0 32 32" fill="none">
-    <path d="M16 4 L19 12 L28 12 L21 18 L24 28 L16 22 L8 28 L11 18 L4 12 L13 12 Z" stroke="#4A4A4A" strokeWidth="1" strokeDasharray="2 2" fill="none" opacity="0.4" />
+    <path d="M6 4 L6 24 L12 18 L16 26 L20 24 L16 16 L24 16 Z" stroke="#4A4A4A" strokeWidth="1.5" strokeDasharray="3 2" fill="none" opacity="0.5" strokeLinejoin="round" />
   </svg>
 )
 
-const DoodleCircle = ({ className = '' }: { className?: string }) => (
-  <svg className={`w-10 h-10 ${className}`} viewBox="0 0 40 40" fill="none">
-    <circle cx="20" cy="20" r="16" stroke="#4A4A4A" strokeWidth="1.5" strokeDasharray="4 3" fill="none" opacity="0.4" />
-  </svg>
-)
-
-const DoodleCheckbox = ({ className = '' }: { className?: string }) => (
-  <svg className={`w-6 h-6 ${className}`} viewBox="0 0 24 24" fill="none">
-    <rect x="3" y="3" width="18" height="18" rx="2" stroke="#4A4A4A" strokeWidth="1.5" strokeDasharray="3 2" fill="none" opacity="0.5" />
-    <path d="M7 12 L11 16 L17 8" stroke="#4A4A4A" strokeWidth="1.5" strokeDasharray="2 2" fill="none" opacity="0.5" />
-  </svg>
-)
-
-const DoodleLightbulb = ({ className = '' }: { className?: string }) => (
-  <svg className={`w-10 h-10 ${className}`} viewBox="0 0 40 40" fill="none">
-    <path d="M14 28 Q 8 20, 12 12 Q 16 4, 24 8 Q 32 12, 28 20 Q 24 28, 20 28" stroke="#4A4A4A" strokeWidth="1.5" strokeDasharray="3 2" fill="none" opacity="0.5" />
-    <rect x="16" y="28" width="8" height="6" rx="1" stroke="#4A4A4A" strokeWidth="1" strokeDasharray="2 2" fill="none" opacity="0.5" />
-    <line x1="18" y1="34" x2="22" y2="34" stroke="#4A4A4A" strokeWidth="1" strokeDasharray="2 2" opacity="0.5" />
-  </svg>
-)
-
-const DoodleHeart = ({ className = '' }: { className?: string }) => (
-  <svg className={`w-8 h-8 ${className}`} viewBox="0 0 32 32" fill="none">
-    <path d="M16 28 C 16 28, 4 20, 4 12 C 4 8, 8 4, 12 4 C 14 4, 16 6, 16 8 C 16 6, 18 4, 20 4 C 24 4, 28 8, 28 12 C 28 20, 16 28, 16 28 Z" stroke="#4A4A4A" strokeWidth="1.5" strokeDasharray="3 2" fill="none" opacity="0.4" />
-  </svg>
-)
-
-const DoodleSmiley = ({ className = '' }: { className?: string }) => (
-  <svg className={`w-10 h-10 ${className}`} viewBox="0 0 40 40" fill="none">
-    <circle cx="20" cy="20" r="16" stroke="#4A4A4A" strokeWidth="1.5" strokeDasharray="4 3" fill="none" opacity="0.4" />
-    <circle cx="14" cy="16" r="2" fill="#4A4A4A" opacity="0.4" />
-    <circle cx="26" cy="16" r="2" fill="#4A4A4A" opacity="0.4" />
-    <path d="M12 24 Q 20 32, 28 24" stroke="#4A4A4A" strokeWidth="1.5" strokeDasharray="3 2" fill="none" opacity="0.4" />
-  </svg>
-)
-
-const DoodleZigzag = ({ className = '' }: { className?: string }) => (
-  <svg className={`w-16 h-6 ${className}`} viewBox="0 0 64 24" fill="none">
-    <path d="M4 12 L16 4 L28 20 L40 4 L52 20 L60 12" stroke="#4A4A4A" strokeWidth="1.5" strokeDasharray="3 2" fill="none" opacity="0.4" />
-  </svg>
+/* Floating wrapper with gentle bob animation */
+const Float = ({ children, delay = 0, duration = 5, x = 0, y = 0 }: { children: React.ReactNode; delay?: number; duration?: number; x?: number; y?: number }) => (
+  <motion.div
+    className="absolute"
+    style={{ left: x, top: y }}
+    animate={{
+      y: [0, -8, 0, 6, 0],
+      rotate: [0, 3, -2, 1, 0],
+    }}
+    transition={{
+      duration,
+      delay,
+      repeat: Infinity,
+      ease: "easeInOut",
+    }}
+  >
+    {children}
+  </motion.div>
 )
 
 export default function HeroSketch() {
@@ -86,15 +126,31 @@ export default function HeroSketch() {
       {/* Spiral binding on left */}
       <SpiralBinding />
 
-      {/* Scattered doodles */}
-      <DoodleStar className="absolute top-[12%] right-[8%] rotate-12" />
-      <DoodleCircle className="absolute top-[22%] right-[18%] -rotate-12" />
-      <DoodleArrow className="absolute top-[35%] right-[5%] rotate-45" />
-      <DoodleCheckbox className="absolute top-[48%] right-[12%]" />
-      <DoodleLightbulb className="absolute bottom-[30%] right-[8%] rotate-6" />
-      <DoodleHeart className="absolute bottom-[18%] right-[20%] -rotate-12" />
-      <DoodleSmiley className="absolute bottom-[10%] right-[6%]" />
-      <DoodleZigzag className="absolute top-[60%] right-[15%]" />
+      {/* Floating tech doodles */}
+      <Float x="8%" y="12%" delay={0} duration={6}>
+        <FloatingLaptop />
+      </Float>
+      <Float x="18%" y="22%" delay={0.5} duration={5}>
+        <FloatingTerminal />
+      </Float>
+      <Float x="5%" y="35%" delay={1} duration={7}>
+        <FloatingCode />
+      </Float>
+      <Float x="12%" y="48%" delay={1.5} duration={5.5}>
+        <FloatingGear />
+      </Float>
+      <Float x="8%" y="62%" delay={0.3} duration={6.5}>
+        <FloatingCloud />
+      </Float>
+      <Float x="20%" y="72%" delay={0.8} duration={5}>
+        <FloatingDatabase />
+      </Float>
+      <Float x="6%" y="82%" delay={1.2} duration={7}>
+        <FloatingWifi />
+      </Float>
+      <Float x="15%" y="88%" delay={0.6} duration={6}>
+        <FloatingCursor />
+      </Float>
 
       {/* Marginal notes / quotes */}
       <motion.p
@@ -225,8 +281,8 @@ export default function HeroSketch() {
             transition={{ delay: 1, duration: 0.6 }}
             className="flex items-center gap-4 mt-10"
           >
-            <DoodleCheckbox />
-            <DoodleLightbulb />
+            <FloatingCode className="w-6 h-6" />
+            <FloatingTerminal className="w-6 h-6" />
             <span className="text-xs text-[var(--text-muted)] italic ml-2" style={{ fontFamily: "'Caveat', cursive, sans-serif" }}>
               trusted by 50+ clients
             </span>
