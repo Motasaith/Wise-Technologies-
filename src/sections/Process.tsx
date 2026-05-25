@@ -8,8 +8,8 @@ const steps = [
     title: 'Discovery',
     description: 'We dive deep into your business, goals, and users to map out the perfect strategy.',
     icon: Code,
-    color: 'text-accent',
-    borderColor: 'sketch-border-accent',
+    color: 'text-primary',
+    borderColor: 'sketch-border',
     glow: 'glow-accent',
   },
   {
@@ -17,8 +17,8 @@ const steps = [
     title: 'Design',
     description: 'Wireframes, prototypes, and pixel-perfect UI crafted with intention and care.',
     icon: Palette,
-    color: 'text-accent-purple',
-    borderColor: 'sketch-border-purple',
+    color: 'text-primary',
+    borderColor: 'sketch-border',
     glow: 'glow-purple',
   },
   {
@@ -26,8 +26,8 @@ const steps = [
     title: 'Development',
     description: 'Clean, scalable code built with modern frameworks and best practices.',
     icon: Wrench,
-    color: 'text-accent-coral',
-    borderColor: 'sketch-border-coral',
+    color: 'text-primary',
+    borderColor: 'sketch-border',
     glow: 'glow-coral',
   },
   {
@@ -35,7 +35,7 @@ const steps = [
     title: 'Launch',
     description: 'Deploy, optimize, and scale. We ensure your product hits the ground running.',
     icon: Rocket,
-    color: 'text-accent-green',
+    color: 'text-primary',
     borderColor: 'sketch-border',
     glow: '',
   },
@@ -58,7 +58,7 @@ export default function Process() {
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           className="text-center mb-16 md:mb-20"
         >
-          <p className="text-accent text-[10px] sm:text-xs uppercase tracking-widest mb-4">How We Work</p>
+          <p className="text-[var(--text-muted)] text-[10px] sm:text-xs uppercase tracking-widest mb-4">How We Work</p>
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium leading-tight"
             style={{ color: 'var(--text-primary)' }}
           >
@@ -91,7 +91,7 @@ export default function Process() {
                   {step.number}
                 </div>
                 <div className={`w-12 h-12 rounded-full flex items-center justify-center mb-4 ${step.color}`}
-                  style={{ backgroundColor: 'rgba(0,0,0,0.3)' }}
+                  style={{ backgroundColor: 'var(--bg-card-alt)' }}
                 >
                   <Icon className="w-5 h-5" />
                 </div>

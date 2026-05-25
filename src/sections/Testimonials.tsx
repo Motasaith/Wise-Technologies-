@@ -7,21 +7,21 @@ const testimonials = [
     quote: "Wise Technologies transformed our outdated website into a modern, high-converting platform. Their attention to detail and technical expertise is unmatched.",
     author: 'Ahmad Raza',
     role: 'CEO, TechFlow Pakistan',
-    color: 'border-accent',
+    color: 'border-[var(--border-color)]',
     glow: 'glow-accent',
   },
   {
     quote: "The AI automation tools they built saved us 20+ hours per week. Incredible team, incredible results. Highly recommended for any serious business.",
     author: 'Fatima Khan',
     role: 'Operations Director, GreenMart',
-    color: 'border-accent-purple',
+    color: 'border-[var(--border-color)]',
     glow: 'glow-purple',
   },
   {
     quote: "From concept to launch, the process was seamless. They understood our vision and delivered beyond expectations. A true partner in growth.",
     author: 'Usman Ali',
     role: 'Founder, EduSpark',
-    color: 'border-accent-coral',
+    color: 'border-[var(--border-color)]',
     glow: 'glow-coral',
   },
 ]
@@ -35,8 +35,8 @@ export default function Testimonials() {
       style={{ backgroundColor: 'var(--bg)' }}
     >
       {/* Background glow */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent-purple/5 rounded-full blur-[150px] pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-accent/5 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[var(--border-color)]/20 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[var(--border-color)]/20 rounded-full blur-[150px] pointer-events-none" />
 
       <div className="max-w-6xl mx-auto relative z-10">
         {/* Header */}
@@ -47,7 +47,7 @@ export default function Testimonials() {
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           className="text-center mb-16 md:mb-20"
         >
-          <p className="text-accent-coral text-[10px] sm:text-xs uppercase tracking-widest mb-4">Testimonials</p>
+          <p className="text-[var(--text-muted)] text-[10px] sm:text-xs uppercase tracking-widest mb-4">Testimonials</p>
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium leading-tight"
             style={{ color: 'var(--text-primary)' }}
           >

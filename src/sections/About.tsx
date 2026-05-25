@@ -1,24 +1,33 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { Check, Users, Award, Briefcase } from 'lucide-react'
+import { Users, Award, Briefcase } from 'lucide-react'
 import WordsPullUpMultiStyle from '../components/WordsPullUpMultiStyle'
 
-const highlights = [
-  'Web Design & Development',
-  'Creative Solutions',
-  'Affordable Pricing',
-  'Online Support',
-  'Expert Team',
-  'Automation Services',
-  'Quick Access',
-  'Digital Marketing',
+const stats = [
+  { value: 275, label: 'Projects Done', icon: Briefcase, color: 'text-primary' },
+  { value: 144, label: 'Happy Clients', icon: Users, color: 'text-primary' },
+  { value: 17, label: 'Award Winner', icon: Award, color: 'text-primary' },
 ]
 
-const stats = [
-  { value: 275, label: 'Projects Done', icon: Briefcase, color: 'text-accent' },
-  { value: 144, label: 'Happy Clients', icon: Users, color: 'text-accent-purple' },
-  { value: 17, label: 'Award Winner', icon: Award, color: 'text-accent-coral' },
+const teamPolaroids = [
+  { name: 'Sarah - Code Ninja', img: 'https://i.pravatar.cc/300?img=11', rotate: -12, top: '0%', left: '0%', z: 20 },
+  { name: 'David - Cloud Guy', img: 'https://i.pravatar.cc/300?img=33', rotate: 6, top: '20%', right: '0%', z: 10 },
+  { name: 'Elena - UX Artist', img: 'https://i.pravatar.cc/300?img=47', rotate: 3, bottom: '0%', left: '15%', z: 30 },
 ]
+
+const Tape = () => (
+  <div
+    className="absolute -top-3 left-1/2 -translate-x-1/2 w-20 h-6 z-10"
+    style={{
+      backgroundColor: 'rgba(255,255,255,0.6)',
+      boxShadow: '0 1px 3px rgba(0,0,0,0.2)',
+      backdropFilter: 'blur(2px)',
+      transform: 'translateX(-50%) rotate(-3deg)',
+      borderLeft: '2px dashed rgba(0,0,0,0.1)',
+      borderRight: '2px dashed rgba(0,0,0,0.1)',
+    }}
+  />
+)
 
 export default function About() {
   const ref = useRef(null)
@@ -28,14 +37,14 @@ export default function About() {
     <section id="about" className="py-20 md:py-32 px-4 md:px-6 relative overflow-hidden"
       style={{ backgroundColor: 'var(--bg)' }}
     >
-      <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-accent-purple/5 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-[var(--border-color)]/20 rounded-full blur-[150px] pointer-events-none" />
 
       <div ref={ref} className="max-w-6xl mx-auto relative z-10">
         <motion.p
           initial={{ opacity: 0, y: 10 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
-          className="text-accent text-[10px] sm:text-xs uppercase tracking-widest mb-4 text-center"
+          className="text-[var(--text-muted)] text-[10px] sm:text-xs uppercase tracking-widest mb-4 text-center"
         >
           About Us
         </motion.p>
@@ -44,7 +53,7 @@ export default function About() {
           <WordsPullUpMultiStyle
             segments={[
               { text: 'Exclusive Agency For Technology', className: 'font-normal' },
-              { text: 'Provide Solution', className: 'font-serif italic text-accent' },
+              { text: 'Provide Solution', className: 'font-serif italic text-[var(--text-primary)]' },
             ]}
             containerClassName="text-3xl sm:text-4xl md:text-5xl lg:text-6xl max-w-4xl mx-auto leading-[0.95]"
           />
@@ -83,53 +92,88 @@ export default function About() {
           })}
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="sketch-border-accent paper-texture p-8 md:p-10 glow-accent"
-          >
-            <h3 className="text-2xl md:text-3xl font-medium mb-4" style={{ color: 'var(--text-primary)' }}>
-              We Work With <span className="text-accent">17 Years</span> Of Experience
-            </h3>
-            <p className="text-sm md:text-base leading-relaxed mb-6" style={{ color: 'var(--text-muted)' }}>
-              With 17 years of expertise, we deliver innovative solutions tailored to your needs. Our team ensures excellence in every project, driving success and growth.
-            </p>
-            <div className="grid grid-cols-2 gap-3">
-              {highlights.map((item, i) => (
-                <div key={i} className="flex items-center gap-2">
-                  <Check className="w-4 h-4 text-accent flex-shrink-0" />
-                  <span className="text-xs md:text-sm" style={{ color: 'var(--text-secondary)' }}>{item}</span>
+        {/* Main About Card with Polaroid Gallery */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7, delay: 0.2 }}
+          className="sketch-border bg-white p-8 md:p-12 relative overflow-hidden"
+          style={{ boxShadow: '5px 5px 0px rgba(44,62,80,0.15)' }}
+        >
+          {/* Decorative background doodle */}
+          <div className="absolute -right-20 -top-20 opacity-5 pointer-events-none">
+            <svg width="300" height="300" viewBox="0 0 24 24" fill="currentColor" className="text-[#2c3e50]">
+              <path d="M18 8h1a4 4 0 0 1 0 8h-1M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8zM6 1v3M10 1v3M14 1v3" />
+            </svg>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
+            <div>
+              <h2
+                className="text-4xl md:text-5xl font-bold text-[#2c3e50] mb-6"
+                style={{ fontFamily: "'Kalam', cursive" }}
+              >
+                The <span
+                  style={{
+                    background: 'linear-gradient(104deg, rgba(168,255,158,0) 0.9%, rgba(168,255,158,0.8) 2.4%, rgba(168,255,158,0.5) 5.8%, rgba(168,255,158,0.9) 93%, rgba(168,255,158,0) 96%)',
+                    padding: '0 8px',
+                  }}
+                >Nerds</span> Behind the Code
+              </h2>
+              <p className="text-lg text-[var(--text-muted)] mb-6 leading-relaxed" style={{ fontFamily: "'Architects Daughter', cursive" }}>
+                We started in 2018 in a tiny room with a whiteboard and too much coffee. Today, Wise Tech is a collective of designers, hackers, and builders who refuse to do things the "normal" way.
+              </p>
+              <p className="text-lg text-[var(--text-muted)] mb-8 leading-relaxed" style={{ fontFamily: "'Architects Daughter', cursive" }}>
+                We believe that great software should feel organic, intuitive, and fun to use. We don't do corporate jargon; we do results.
+              </p>
+
+              <div className="flex gap-4">
+                <div
+                  className="sketch-border px-4 py-2 transform -rotate-2"
+                  style={{ background: '#fef9c3', boxShadow: '2px 2px 0px rgba(44,62,80,0.1)' }}
+                >
+                  <span className="font-bold text-[#2c3e50]" style={{ fontFamily: "'Kalam', cursive" }}>275+ Projects</span>
                 </div>
+                <div
+                  className="sketch-border px-4 py-2 transform rotate-2"
+                  style={{ background: '#dbeafe', boxShadow: '2px 2px 0px rgba(44,62,80,0.1)' }}
+                >
+                  <span className="font-bold text-[#2c3e50]" style={{ fontFamily: "'Kalam', cursive" }}>0% Boring</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Polaroid Gallery */}
+            <div className="relative h-80 md:h-96">
+              {teamPolaroids.map((p, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, scale: 0.8, rotate: p.rotate - 5 }}
+                  animate={isInView ? { opacity: 1, scale: 1, rotate: p.rotate } : {}}
+                  transition={{ duration: 0.6, delay: 0.5 + i * 0.15 }}
+                  className="absolute w-40 md:w-48 bg-white p-2 pb-10 shadow-lg sketch-border hover:rotate-0 transition-all cursor-pointer"
+                  style={{
+                    top: p.top,
+                    left: p.left,
+                    right: p.right,
+                    bottom: p.bottom,
+                    zIndex: p.z,
+                    boxShadow: '3px 3px 0px rgba(44,62,80,0.15)',
+                  }}
+                >
+                  <Tape />
+                  <img src={p.img} alt={p.name} className="w-full h-auto grayscale" />
+                  <p
+                    className="absolute bottom-2 left-0 w-full text-center font-bold text-sm text-[#2c3e50]"
+                    style={{ fontFamily: "'Kalam', cursive" }}
+                  >
+                    {p.name}
+                  </p>
+                </motion.div>
               ))}
             </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.4 }}
-            className="relative"
-          >
-            <div className="sketch-border overflow-hidden mb-6">
-              <img
-                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80"
-                alt="Dedicated team"
-                className="w-full h-[280px] md:h-[320px] object-cover sketch-filter"
-              />
-            </div>
-            <div className="paper-texture p-6 md:p-8 sketch-border-purple glow-purple">
-              <p className="text-accent-purple text-[10px] sm:text-xs uppercase tracking-widest mb-3">Our Best</p>
-              <h4 className="text-xl md:text-2xl font-medium mb-3" style={{ color: 'var(--text-primary)' }}>
-                Dedicated Team
-              </h4>
-              <p className="text-sm leading-relaxed" style={{ color: 'var(--text-muted)' }}>
-                Our team is passionate about delivering excellence. With years of experience in the industry, we consistently exceed expectations by providing top-notch solutions that align with your objectives. Whether it's design, development, or strategy, we ensure your success at every step.
-              </p>
-            </div>
-          </motion.div>
-        </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   )

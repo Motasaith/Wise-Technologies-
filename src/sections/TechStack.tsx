@@ -91,16 +91,16 @@ export default function TechStack() {
       className="py-20 md:py-32 px-4 md:px-6 relative overflow-hidden"
       style={{ backgroundColor: 'var(--bg)' }}
     >
-      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-accent-coral/5 rounded-full blur-[150px] pointer-events-none" />
-      <div className="absolute top-0 left-0 w-[400px] h-[400px] bg-accent-purple/5 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-[var(--border-color)]/20 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute top-0 left-0 w-[400px] h-[400px] bg-[var(--border-color)]/20 rounded-full blur-[150px] pointer-events-none" />
 
       <div className="max-w-6xl mx-auto relative z-10">
         <motion.div style={{ y: headerY, opacity: headerOpacity }} className="text-center mb-16 md:mb-20">
-          <p className="text-accent text-[10px] sm:text-xs uppercase tracking-widest mb-4">
+          <p className="text-[var(--text-muted)] text-[10px] sm:text-xs uppercase tracking-widest mb-4">
             Our Expertise
           </p>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium mb-4" style={{ color: 'var(--text-primary)' }}>
-            Technology <span className="font-serif italic text-accent">Stack</span>
+            Technology <span className="font-serif italic text-[var(--text-primary)]">Stack</span>
           </h2>
           <p className="text-sm md:text-base max-w-2xl mx-auto" style={{ color: 'var(--text-muted)' }}>
             We master a wide range of modern technologies to deliver cutting-edge solutions.

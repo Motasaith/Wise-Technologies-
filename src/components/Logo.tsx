@@ -1,9 +1,4 @@
-import { useTheme } from '../context/ThemeContext'
-
 export default function Logo({ className = '' }: { className?: string }) {
-  const { theme } = useTheme()
-  const isDark = theme === 'dark'
-
   return (
     <svg
       viewBox="0 0 400 120"
@@ -16,7 +11,7 @@ export default function Logo({ className = '' }: { className?: string }) {
         fontFamily="'Segoe UI', Arial, sans-serif"
         fontSize="42"
         fontWeight="700"
-        fill={isDark ? '#ffffff' : '#333333'}
+        fill="#2C2C2C"
       >
         Wise
       </text>
@@ -26,7 +21,7 @@ export default function Logo({ className = '' }: { className?: string }) {
         fontFamily="'Segoe UI', Arial, sans-serif"
         fontSize="42"
         fontWeight="700"
-        fill={isDark ? '#ffffff' : '#333333'}
+        fill="#2C2C2C"
       >
         Techn
       </text>
@@ -36,7 +31,7 @@ export default function Logo({ className = '' }: { className?: string }) {
         fontFamily="'Segoe UI', Arial, sans-serif"
         fontSize="42"
         fontWeight="700"
-        fill="#00D4FF"
+        fill="#5C5C5C"
       >
         o
       </text>
@@ -46,7 +41,7 @@ export default function Logo({ className = '' }: { className?: string }) {
         fontFamily="'Segoe UI', Arial, sans-serif"
         fontSize="42"
         fontWeight="700"
-        fill={isDark ? '#ffffff' : '#333333'}
+        fill="#2C2C2C"
       >
         logies
       </text>
@@ -56,7 +51,7 @@ export default function Logo({ className = '' }: { className?: string }) {
         fontFamily="'Brush Script MT', 'Segoe Script', cursive"
         fontSize="22"
         fontStyle="italic"
-        fill={isDark ? '#aaaaaa' : '#666666'}
+        fill="#7A7A7A"
       >
         A Web Solution Provider
       </text>

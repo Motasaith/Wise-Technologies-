@@ -24,7 +24,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8 mb-12">
           {/* Brand */}
           <div>
-            <img src="/logo-white.svg" alt="Wise Technologies" className="h-10 md:h-12 w-auto mb-4 logo-theme" />
+            <h3 className="text-xl md:text-2xl font-bold mb-4" style={{ color: 'var(--text-primary)' }}>Wise Technologies</h3>
             <p className="text-xs md:text-sm leading-relaxed max-w-xs" style={{ color: 'var(--text-muted)' }}>
               Wise Technologies RYK specializes in innovative tech solutions, providing expert IT services to businesses.
             </p>
@@ -39,7 +39,7 @@ export default function Footer() {
                   {link.type === 'link' ? (
                     <Link
                       to={link.to!}
-                      className="text-sm hover:text-accent transition-colors inline-flex items-center gap-1 group"
+                      className="text-sm hover:text-[var(--text-primary)] transition-colors inline-flex items-center gap-1 group"
                       style={{ color: 'var(--text-muted)' }}
                     >
                       {link.label}
@@ -48,7 +48,7 @@ export default function Footer() {
                   ) : (
                     <a
                       href={link.href}
-                      className="text-sm hover:text-accent transition-colors inline-flex items-center gap-1 group"
+                      className="text-sm hover:text-[var(--text-primary)] transition-colors inline-flex items-center gap-1 group"
                       style={{ color: 'var(--text-muted)' }}
                     >
                       {link.label}

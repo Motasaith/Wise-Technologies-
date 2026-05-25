@@ -1,11 +1,11 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #DEDBC8;
-  --color-accent: #00D4FF;
-  --color-accent-purple: #A855F7;
-  --color-accent-coral: #FF6B6B;
-  --color-accent-green: #22C55E;
+  --color-primary: #3D3D3D;
+  --color-accent: #5C5C5C;
+  --color-accent-purple: #7A7A7A;
+  --color-accent-coral: #8B6B5C;
+  --color-accent-green: #6B7B6B;
   --font-serif: "Instrument Serif", serif;
 }
 
@@ -17,27 +17,18 @@ html {
   scroll-behavior: smooth;
 }
 
-/* CSS Variables for theming */
+/* Sketchbook paper palette — fixed, no theme switching */
 :root {
-  --bg: #000000;
-  --bg-card: #101010;
-  --bg-card-alt: #1a1a1a;
-  --text-primary: #E1E0CC;
-  --text-secondary: #DEDBC8;
-  --text-muted: #9ca3af;
-  --border-color: #2a2a2a;
-  --nav-bg: rgba(0, 0, 0, 0.8);
-}
-
-:root.light {
-  --bg: #F5F3EE;
-  --bg-card: #FFFFFF;
-  --bg-card-alt: #f0f0f0;
-  --text-primary: #1a1a1a;
-  --text-secondary: #2d2d2d;
-  --text-muted: #6b7280;
-  --border-color: #e5e5e5;
-  --nav-bg: rgba(245, 243, 238, 0.9);
+  --bg: #F5F0E6;
+  --bg-card: #EDE8DC;
+  --bg-card-alt: #E5DFD0;
+  --text-primary: #2C2C2C;
+  --text-secondary: #3D3D3D;
+  --text-muted: #7A7A7A;
+  --border-color: #C8C0B0;
+  --nav-bg: rgba(245, 240, 230, 0.85);
+  --sketch-line: #4A4A4A;
+  --paper-line: #D1C7B7;
 }
 
 body {
@@ -45,56 +36,180 @@ body {
   color: var(--text-primary);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  transition: background-color 0.5s ease, color 0.5s ease;
 }
 
-/* Tech stack icon visibility */
+/* Sketch-style dashed borders — hand-drawn feel */
+.sketch-border {
+  border: 3px solid #2c3e50;
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  background: #fff;
+  box-shadow: 5px 5px 0px rgba(44, 62, 80, 0.2);
+  transition: all 0.3s ease;
+}
+
+.sketch-border:hover {
+  border-radius: 15px 255px 15px 225px / 225px 15px 255px 15px;
+}
+
+.sketch-border-thin {
+  border: 2px solid #2c3e50;
+  border-radius: 15px 225px 15px 255px / 255px 15px 225px 15px;
+  background: #fff;
+}
+
+/* Highlighter text effects */
+.highlight-yellow {
+  background: linear-gradient(104deg, rgba(255, 235, 59, 0) 0.9%, rgba(255, 235, 59, 0.8) 2.4%, rgba(255, 235, 59, 0.5) 5.8%, rgba(255, 235, 59, 0.9) 93%, rgba(255, 235, 59, 0) 96%);
+  padding: 0 8px;
+}
+
+.highlight-pink {
+  background: linear-gradient(104deg, rgba(255, 154, 221, 0) 0.9%, rgba(255, 154, 221, 0.8) 2.4%, rgba(255, 154, 221, 0.5) 5.8%, rgba(255, 154, 221, 0.9) 93%, rgba(255, 154, 221, 0) 96%);
+  padding: 0 8px;
+}
+
+.highlight-green {
+  background: linear-gradient(104deg, rgba(168, 255, 158, 0) 0.9%, rgba(168, 255, 158, 0.8) 2.4%, rgba(168, 255, 158, 0.5) 5.8%, rgba(168, 255, 158, 0.9) 93%, rgba(168, 255, 158, 0) 96%);
+  padding: 0 8px;
+}
+
+/* Post-it note styles */
+.post-it {
+  background: #feff9c;
+  padding: 20px;
+  box-shadow: 3px 5px 10px rgba(0,0,0,0.15);
+  position: relative;
+  transform: rotate(-1deg);
+  transition: all 0.2s;
+  border-radius: 2px;
+}
+.post-it:nth-child(even) { background: #7afcff; transform: rotate(2deg); }
+.post-it:nth-child(3n) { background: #ff7eb9; transform: rotate(-2deg); }
+
+.post-it:hover {
+  transform: scale(1.05) rotate(0deg);
+  z-index: 20;
+  box-shadow: 5px 8px 15px rgba(0,0,0,0.2);
+}
+
+/* Scribble underline */
+.scribble-underline {
+  position: relative;
+  display: inline-block;
+}
+.scribble-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 10" preserveAspectRatio="none"><path d="M0,5 Q20,0 40,5 T80,5 T100,5" stroke="%23e74c3c" stroke-width="3" fill="none"/></svg>') no-repeat;
+  background-size: 100% 100%;
+}
+
+/* Custom drawn button */
+.btn-drawn {
+  position: relative;
+  display: inline-block;
+  background: transparent;
+  color: #2c3e50;
+  font-family: 'Kalam', cursive;
+  font-size: 1.25rem;
+  font-weight: bold;
+  padding: 0.5rem 1.5rem;
+  border: none;
+  cursor: pointer;
+  z-index: 1;
+}
+.btn-drawn::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  border: 2px solid #2c3e50;
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+  z-index: -1;
+  transition: all 0.2s;
+  background: #ffeb3b;
+}
+.btn-drawn:hover::before {
+  background: #a8ff9e;
+  transform: scale(1.05) rotate(-2deg);
+}
+
+/* Notebook horizontal lines background */
+.paper-lines {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent,
+    transparent 31px,
+    var(--paper-line) 31px,
+    var(--paper-line) 32px
+  );
+  background-size: 100% 32px;
+}
+
+/* Pencil underline effect */
+.pencil-underline {
+  position: relative;
+}
+.pencil-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--sketch-line);
+  border-radius: 1px;
+  opacity: 0.6;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+.pencil-underline:hover::after {
+  transform: scaleX(1);
+}
+
+/* Tech stack icon visibility — fixed warm tone */
 .tech-icon {
-  filter: invert(1) brightness(2) !important;
+  filter: invert(0.3) brightness(0.8) !important;
 }
 
-:root.light .tech-icon {
-  filter: none !important;
-}
-
-/* Theme-aware logo */
+/* Theme-aware logo — removed, handled in component */
 .logo-theme {
   filter: none;
 }
 
-:root.light .logo-theme {
-  filter: brightness(0);
-}
-
+/* Sketch borders — warm pencil tones */
 .sketch-border-accent {
-  border: 1px solid #00D4FF;
-  border-radius: 12px;
+  border: 2px dashed #5C5C5C;
+  border-radius: 4px;
 }
 
 .sketch-border-coral {
-  border: 1px solid #FF6B6B;
-  border-radius: 12px;
+  border: 2px dashed #8B6B5C;
+  border-radius: 4px;
 }
 
 .sketch-border-purple {
-  border: 1px solid #A855F7;
-  border-radius: 12px;
+  border: 2px dashed #7A7A7A;
+  border-radius: 4px;
 }
 
 .sketch-border {
-  border: 1px solid var(--border-color);
-  border-radius: 12px;
+  border: 2px dashed var(--border-color);
+  border-radius: 4px;
 }
 
 /* Clean card background */
 .paper-texture {
   background-color: var(--bg-card);
-  transition: background-color 0.5s ease;
 }
 
 /* Clean image treatment */
 .sketch-filter {
-  filter: none;
+  filter: sepia(0.15) contrast(0.95);
   transition: transform 0.5s ease;
 }
 
@@ -102,17 +217,17 @@ body {
   transform: scale(1.02);
 }
 
-/* Vibrant glow effects */
+/* Subtle warm glow effects */
 .glow-accent {
-  box-shadow: 0 0 20px rgba(0, 212, 255, 0.15), 0 0 40px rgba(0, 212, 255, 0.05);
+  box-shadow: 0 4px 20px rgba(74, 74, 74, 0.08);
 }
 
 .glow-purple {
-  box-shadow: 0 0 20px rgba(168, 85, 247, 0.15), 0 0 40px rgba(168, 85, 247, 0.05);
+  box-shadow: 0 4px 20px rgba(74, 74, 74, 0.08);
 }
 
 .glow-coral {
-  box-shadow: 0 0 20px rgba(255, 107, 107, 0.15), 0 0 40px rgba(255, 107, 107, 0.05);
+  box-shadow: 0 4px 20px rgba(74, 74, 74, 0.08);
 }
 
 /* Custom scrollbar */

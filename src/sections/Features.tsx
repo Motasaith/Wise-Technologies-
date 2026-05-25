@@ -1,162 +1,90 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { ArrowRight, Check } from 'lucide-react'
+import { ArrowRight, Code, Cloud, Bot, Smartphone, Shield, Zap } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import WordsPullUpMultiStyle from '../components/WordsPullUpMultiStyle'
 
-const cards = [
+const postIts = [
   {
-    type: 'feature' as const,
-    number: '01',
-    title: 'Web Development',
-    imageUrl: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=400&q=80',
-    items: [
-      'Custom Website Development',
-      'E-Commerce Development',
-      'CMS-Based Website Development',
-      'Web Application Development',
-      'API Integration and Development',
-      'Front-End & Back-End Development',
-    ],
-    borderClass: 'sketch-border-accent',
-    glowClass: 'glow-accent',
-    accentColor: 'text-accent',
+    icon: Code,
+    title: 'Bespoke Software',
+    desc: 'We write code from scratch. No clunky plugins, just clean, fast, and scalable applications built precisely for your needs.',
+    cta: "Let's build!",
+    color: '#feff9c',
+    rotate: -1,
   },
   {
-    type: 'feature' as const,
-    number: '02',
-    title: 'AI Integrated Apps',
-    imageUrl: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&q=80',
-    items: [
-      'OpenAI / GPT Integration',
-      'Claude & LLM-Powered Features',
-      'Chatbots & Virtual Assistants',
-      'AI Content Generation Tools',
-      'Smart Recommendation Engines',
-    ],
-    borderClass: 'sketch-border-purple',
-    glowClass: 'glow-purple',
-    accentColor: 'text-accent-purple',
+    icon: Cloud,
+    title: 'Cloud Magic',
+    desc: 'Moving to the cloud? We design infrastructure that handles millions of users without breaking a sweat (or your budget).',
+    cta: 'Scale up!',
+    color: '#7afcff',
+    rotate: 2,
   },
   {
-    type: 'feature' as const,
-    number: '03',
-    title: 'Full Stack Web Development',
-    imageUrl: 'https://images.unsplash.com/photo-1587620962725-abab7fe55159?w=400&q=80',
-    items: [
-      'MERN / MEAN Stack Development',
-      'Database Design & Management',
-      'REST & GraphQL APIs',
-      'Serverless Architecture',
-      'DevOps & CI/CD Pipelines',
-    ],
-    borderClass: 'sketch-border-coral',
-    glowClass: 'glow-coral',
-    accentColor: 'text-accent-coral',
+    icon: Bot,
+    title: 'Smart AI',
+    desc: 'We train machines to do the boring stuff so you don\'t have to. Predictive data, automation, and intelligent bots.',
+    cta: 'Get smarter!',
+    color: '#ff7eb9',
+    rotate: -2,
   },
   {
-    type: 'feature' as const,
-    number: '04',
-    title: 'Android / Mobile App Development',
-    imageUrl: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&q=80',
-    items: [
-      'Native Android & iOS Apps',
-      'Cross-Platform Development',
-      'React Native & Flutter',
-      'App Store Optimization',
-      'Mobile UI/UX Design',
-    ],
-    borderClass: 'sketch-border',
-    glowClass: '',
-    accentColor: 'text-primary',
+    icon: Smartphone,
+    title: 'App Design',
+    desc: 'Interfaces that look so good you want to lick them. (Please don\'t lick your phone). User-centric UI/UX design.',
+    cta: 'See designs!',
+    color: '#ffd699',
+    rotate: 1,
   },
   {
-    type: 'feature' as const,
-    number: '05',
-    title: 'Computer Vision & Automation',
-    imageUrl: 'https://images.unsplash.com/photo-1555255707-c07966088b7b?w=400&q=80',
-    items: [
-      'Image Recognition Systems',
-      'Object Detection & Tracking',
-      'OCR & Document Processing',
-      'Workflow Automation (n8n / Zapier)',
-      'RPA & Business Process Automation',
-    ],
-    borderClass: 'sketch-border-accent',
-    glowClass: 'glow-accent',
-    accentColor: 'text-accent',
+    icon: Shield,
+    title: 'Cyber Security',
+    desc: 'We lock your data down tighter than a drum. Penetration testing, audits, and rock-solid architecture.',
+    cta: 'Stay safe!',
+    color: '#c5f9a8',
+    rotate: -3,
   },
   {
-    type: 'feature' as const,
-    number: '06',
-    title: 'Progressive Web Apps (PWAs)',
-    imageUrl: 'https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=400&q=80',
-    items: [
-      'Offline-First Architecture',
-      'Push Notifications & Background Sync',
-      'Responsive & Installable Design',
-      'Service Worker Implementation',
-      'App-Like Experience on Mobile',
-    ],
-    borderClass: 'sketch-border-purple',
-    glowClass: 'glow-purple',
-    accentColor: 'text-accent-purple',
+    icon: Zap,
+    title: 'Have a crazy idea?',
+    desc: 'We love weird, complex, and "impossible" projects. If you can draw it on a napkin, we can probably code it.',
+    cta: 'Challenge us!',
+    color: '#e2c5ff',
+    rotate: 2,
+    isSpecial: true,
   },
 ]
 
-function FeatureCard({
-  card,
-  index,
-}: {
-  card: (typeof cards)[number]
-  index: number
-}) {
+function PostItCard({ card, index }: { card: typeof postIts[0]; index: number }) {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-100px' })
+  const Icon = card.icon
 
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, scale: 0.95 }}
-      animate={isInView ? { opacity: 1, scale: 1 } : {}}
-      transition={{
-        duration: 0.6,
-        delay: index * 0.15,
-        ease: [0.22, 1, 0.36, 1],
+      initial={{ opacity: 0, scale: 0.9, rotate: card.rotate - 3 }}
+      animate={isInView ? { opacity: 1, scale: 1, rotate: card.rotate } : {}}
+      transition={{ duration: 0.5, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
+      className={`flex flex-col h-full p-6 transition-all duration-200 hover:scale-105 hover:rotate-0 hover:z-20 ${card.isSpecial ? 'sketch-border' : ''}`}
+      style={{
+        background: card.color,
+        boxShadow: card.isSpecial ? '5px 5px 0px rgba(44,62,80,0.2)' : '3px 5px 10px rgba(0,0,0,0.15)',
+        transform: `rotate(${card.rotate}deg)`,
       }}
-      className={`relative overflow-hidden ${card.borderClass} ${card.glowClass} transition-all duration-500 hover:scale-[1.02]`}
     >
-      <div className="p-5 sm:p-6 h-full flex flex-col"
-        style={{ backgroundColor: 'var(--bg-card-alt)' }}
-      >
-        <div className="w-full h-32 sm:h-40 rounded-lg overflow-hidden mb-4">
-          <img
-            src={card.imageUrl}
-            alt={card.title}
-            className="w-full h-full object-cover sketch-filter"
-          />
-        </div>
-        <div className="flex items-baseline gap-2 mb-4">
-          <span className="text-xs" style={{ color: 'var(--text-muted)' }}>{card.number}</span>
-          <h3 className={`text-lg sm:text-xl font-medium ${card.accentColor}`}>{card.title}</h3>
-        </div>
-
-        <ul className="flex-1 space-y-3 mb-6">
-          {card.items.map((item, i) => (
-            <li key={i} className="flex items-start gap-2">
-              <Check className="w-4 h-4 text-accent mt-0.5 flex-shrink-0" />
-              <span className="text-xs sm:text-sm" style={{ color: 'var(--text-muted)' }}>{item}</span>
-            </li>
-          ))}
-        </ul>
-
-        <a
-          href="#"
-          className="inline-flex items-center gap-1 text-accent text-xs sm:text-sm group"
-        >
-          <span>Learn more</span>
-          <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" style={{ transform: 'rotate(-45deg)' }} />
-        </a>
+      <div className="text-3xl mb-3 text-[#2c3e50]">
+        <Icon className="w-8 h-8" />
+      </div>
+      <h3 className="font-bold text-xl mb-2 text-[#2c3e50]" style={{ fontFamily: "'Kalam', cursive" }}>
+        {card.title}
+      </h3>
+      <p className="text-[#2c3e50]/80 flex-grow text-base leading-relaxed" style={{ fontFamily: "'Architects Daughter', cursive" }}>
+        {card.desc}
+      </p>
+      <div className="mt-4 pt-3 border-t border-[#2c3e50]/20 font-bold text-sm text-[#2c3e50] flex items-center gap-1" style={{ fontFamily: "'Kalam', cursive" }}>
+        <ArrowRight className="w-4 h-4" />
+        {card.cta}
       </div>
     </motion.div>
   )
@@ -164,44 +92,47 @@ function FeatureCard({
 
 export default function Features() {
   return (
-    <section id="services" className="min-h-screen relative py-20 md:py-32 px-4 md:px-6"
+    <section id="services" className="py-24 relative"
       style={{ backgroundColor: 'var(--bg)' }}
     >
+      {/* SVG Scribble Divider */}
+      <div className="absolute top-0 left-0 w-full overflow-hidden text-[#2c3e50]/20 transform -translate-y-1/2 flex justify-center">
+        <svg width="300" height="40" viewBox="0 0 300 40" xmlns="http://www.w3.org/2000/svg">
+          <path d="M5,20 Q40,5 75,20 T145,20 T215,20 T285,20" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+        </svg>
+      </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto">
-        {/* Header */}
-        <div className="mb-12 md:mb-16">
-          <WordsPullUpMultiStyle
-            segments={[
-              {
-                text: 'Enterprise-grade solutions for ambitious builders.',
-                className: 'text-primary',
-              },
-              {
-                text: 'Built for scale. Powered by expertise.',
-                className: 'font-serif italic text-accent',
-              },
-            ]}
-            containerClassName="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-normal"
-          />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-3xl mx-auto mb-16 relative">
+          <h2 className="text-4xl md:text-5xl font-bold text-[#2c3e50] mb-4 inline-block relative" style={{ fontFamily: "'Kalam', cursive" }}>
+            <span className="highlight-pink">What we do best</span>
+            {/* Doodle arrow */}
+            <svg className="absolute -bottom-8 -right-12 w-16 h-16 text-[#2c3e50] transform rotate-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </h2>
         </div>
 
-        {/* Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-          {cards.map((card, i) => (
-            <FeatureCard key={i} card={card} index={i} />
+        {/* Sticky Notes Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-14 mt-12">
+          {postIts.map((card, i) => (
+            <PostItCard key={i} card={card} index={i} />
           ))}
         </div>
 
-        <div className="mt-12 md:mt-16 text-center">
+        <div className="mt-16 text-center">
           <Link
             to="/services"
-            className="inline-flex items-center gap-3 px-8 py-4 sketch-border-accent text-accent text-sm sm:text-base font-medium transition-all duration-300 hover:glow-accent hover:scale-105"
+            className="relative inline-flex items-center gap-3 px-8 py-4 text-lg font-bold"
+            style={{ fontFamily: "'Kalam', cursive", color: '#2c3e50' }}
           >
-            <span>View All 13+ Services</span>
+            <span className="absolute inset-0 border-2 border-[#2c3e50] -z-10 transition-all duration-200 hover:scale-105"
+              style={{ borderRadius: '255px 15px 225px 15px / 15px 225px 15px 255px', background: '#ffeb3b' }}
+            />
+            View All 13+ Services
             <ArrowRight className="w-5 h-5" />
           </Link>
-          <p className="mt-3 text-xs" style={{ color: 'var(--text-muted)' }}>
+          <p className="mt-4 text-sm text-[var(--text-muted)]" style={{ fontFamily: "'Architects Daughter', cursive" }}>
             Including SEO, WordPress, Security, Content Writing, Vibe Coding & more
           </p>
         </div>

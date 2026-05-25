@@ -1,8 +1,8 @@
 import { motion, useScroll, useTransform, useMotionValueEvent } from 'framer-motion'
 import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+import { Lightbulb, Pen, X } from 'lucide-react'
 import Logo from './Logo'
-import ThemeToggle from './ThemeToggle'
 
 const navItems = [
   { label: 'Home', href: '#', type: 'anchor' as const },
@@ -16,6 +16,7 @@ const navItems = [
 export default function Header() {
   const { scrollY } = useScroll()
   const [scrolled, setScrolled] = useState(false)
+  const [mobileOpen, setMobileOpen] = useState(false)
   const location = useLocation()
   const isHome = location.pathname === '/'
 
@@ -33,80 +34,139 @@ export default function Header() {
     if (el) {
       el.scrollIntoView({ behavior: 'smooth' })
     }
+    setMobileOpen(false)
   }
 
   return (
     <motion.header
       className="fixed top-0 left-0 right-0 z-50 px-4 md:px-8 py-3 md:py-4"
-      style={{
-        backgroundColor: scrolled ? 'var(--nav-bg)' : 'transparent',
-        backdropFilter: scrolled ? 'blur(20px)' : 'none',
-        WebkitBackdropFilter: scrolled ? 'blur(20px)' : 'none',
-        borderBottom: scrolled ? '1px solid var(--border-color)' : '1px solid transparent',
-      }}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
     >
-      <div className="max-w-7xl mx-auto flex items-center justify-between">
-        <motion.div style={{ scale: logoScale }}>
-          <Link to="/">
-            <Logo className="h-7 md:h-9 w-auto" />
-          </Link>
-        </motion.div>
+      <div
+        className="max-w-7xl mx-auto sketch-border bg-white/90 backdrop-blur-sm px-4 md:px-6 py-2"
+        style={{
+          boxShadow: scrolled ? '5px 5px 0px rgba(74,74,74,0.15)' : '5px 5px 0px rgba(74,74,74,0.08)',
+        }}
+      >
+        <div className="flex items-center justify-between h-14">
+          {/* Logo with lightbulb */}
+          <motion.div style={{ scale: logoScale }} className="flex items-center gap-2">
+            <Link to="/" className="flex items-center gap-2">
+              <Lightbulb className="w-6 h-6 text-[#e74c3c] animate-pulse" />
+              <Logo className="h-7 md:h-9 w-auto" />
+            </Link>
+          </motion.div>
 
-        <div className="flex items-center gap-3 md:gap-4">
-          <motion.nav
-            className="flex items-center"
-            style={{ gap: navGap }}
+          {/* Desktop Nav */}
+          <div className="hidden md:flex items-center gap-3 md:gap-4">
+            <motion.nav
+              className="flex items-center"
+              style={{ gap: navGap }}
+            >
+              {navItems.map((item, i) => (
+                <motion.div
+                  key={item.label}
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{
+                    duration: 0.5,
+                    delay: 0.1 + i * 0.08,
+                    ease: [0.16, 1, 0.3, 1],
+                  }}
+                >
+                  {item.type === 'link' ? (
+                    <Link
+                      to={item.to!}
+                      className="group relative block overflow-hidden text-[10px] sm:text-xs md:text-sm font-medium whitespace-nowrap py-1 transition-all duration-300 hover:-translate-y-1"
+                      style={{ color: 'var(--text-muted)', fontFamily: "'Kalam', cursive" }}
+                    >
+                      <span className="relative block">
+                        <span className="block transition-colors duration-300 group-hover:text-[#e74c3c]">
+                          {item.label}
+                        </span>
+                      </span>
+                    </Link>
+                  ) : (
+                    <a
+                      href={item.href}
+                      onClick={(e) => handleAnchorClick(e, item.href)}
+                      className="group relative block overflow-hidden text-[10px] sm:text-xs md:text-sm font-medium whitespace-nowrap py-1 transition-all duration-300 hover:-translate-y-1"
+                      style={{ color: 'var(--text-muted)', fontFamily: "'Kalam', cursive" }}
+                    >
+                      <span className="relative block">
+                        <span className="block transition-colors duration-300 group-hover:text-[#e74c3c]">
+                          {item.label}
+                        </span>
+                      </span>
+                    </a>
+                  )}
+                </motion.div>
+              ))}
+            </motion.nav>
+
+            {/* Say Hello CTA */}
+            <a
+              href="#contact"
+              onClick={(e) => handleAnchorClick(e, '#contact')}
+              className="btn-drawn text-sm ml-4"
+            >
+              Say Hello!
+            </a>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            className="md:hidden text-[var(--text-primary)] focus:outline-none p-2"
+            onClick={() => setMobileOpen(!mobileOpen)}
           >
-            {navItems.map((item, i) => (
-              <motion.div
-                key={item.label}
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{
-                  duration: 0.5,
-                  delay: 0.1 + i * 0.08,
-                  ease: [0.16, 1, 0.3, 1],
-                }}
-              >
-                {item.type === 'link' ? (
-                  <Link
-                    to={item.to!}
-                    className="group relative block overflow-hidden text-[10px] sm:text-xs md:text-sm font-medium whitespace-nowrap py-1"
-                    style={{ color: 'var(--text-muted)' }}
-                  >
-                    <span className="relative block transition-transform duration-300 ease-out group-hover:-translate-y-[3px]">
-                      <span className="block transition-colors duration-300 group-hover:text-accent">
-                        {item.label}
-                      </span>
-                    </span>
-                    <span className="absolute bottom-0 left-1/2 h-[2px] w-full bg-accent origin-center transition-transform duration-300 ease-out scale-x-0 group-hover:scale-x-100 -translate-x-1/2" />
-                  </Link>
-                ) : (
-                  <a
-                    href={item.href}
-                    onClick={(e) => handleAnchorClick(e, item.href)}
-                    className="group relative block overflow-hidden text-[10px] sm:text-xs md:text-sm font-medium whitespace-nowrap py-1"
-                    style={{ color: 'var(--text-muted)' }}
-                  >
-                    <span className="relative block transition-transform duration-300 ease-out group-hover:-translate-y-[3px]">
-                      <span className="block transition-colors duration-300 group-hover:text-accent">
-                        {item.label}
-                      </span>
-                    </span>
-                    <span className="absolute bottom-0 left-1/2 h-[2px] w-full bg-accent origin-center transition-transform duration-300 ease-out scale-x-0 group-hover:scale-x-100 -translate-x-1/2" />
-                  </a>
-                )}
-              </motion.div>
-            ))}
-          </motion.nav>
-
-          {/* Animated Theme Toggle */}
-          <ThemeToggle />
+            {mobileOpen ? <X className="w-6 h-6" /> : <Pen className="w-6 h-6" />}
+          </button>
         </div>
       </div>
+
+      {/* Mobile Menu Dropdown */}
+      {mobileOpen && (
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="md:hidden absolute left-4 right-4 top-24 z-40 sketch-border bg-white/95 backdrop-blur-sm p-4"
+        >
+          <div className="flex flex-col items-center gap-4">
+            {navItems.map((item) => (
+              item.type === 'link' ? (
+                <Link
+                  key={item.label}
+                  to={item.to!}
+                  onClick={() => setMobileOpen(false)}
+                  className="text-base font-medium transition-all duration-300 hover:-translate-y-1 hover:text-[#e74c3c]"
+                  style={{ color: 'var(--text-muted)', fontFamily: "'Kalam', cursive" }}
+                >
+                  {item.label}
+                </Link>
+              ) : (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  onClick={(e) => handleAnchorClick(e, item.href)}
+                  className="text-base font-medium transition-all duration-300 hover:-translate-y-1 hover:text-[#e74c3c]"
+                  style={{ color: 'var(--text-muted)', fontFamily: "'Kalam', cursive" }}
+                >
+                  {item.label}
+                </a>
+              )
+            ))}
+            <a
+              href="#contact"
+              onClick={(e) => handleAnchorClick(e, '#contact')}
+              className="btn-drawn w-full text-center mt-2"
+            >
+              Say Hello!
+            </a>
+          </div>
+        </motion.div>
+      )}
     </motion.header>
   )
 }

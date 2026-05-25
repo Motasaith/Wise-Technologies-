@@ -1,4 +1,3 @@
-import Hero from '../sections/Hero'
 import HeroSketch from '../sections/HeroSketch'
 import About from '../sections/About'
 import Features from '../sections/Features'
@@ -11,7 +10,6 @@ import Footer from '../sections/Footer'
 export default function Home() {
   return (
     <>
-      <Hero />
       <HeroSketch />
       <About />
       <Features />
