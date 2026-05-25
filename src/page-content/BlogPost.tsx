@@ -114,16 +114,15 @@ function Paragraph({ children, index }: { children: string; index: number }) {
   const isInView = useInView(ref, { once: true, margin: '-50px' })
 
   return (
-    <motion.p
+    <motion.div
       ref={ref}
       initial={{ opacity: 0, y: 10 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay: index * 0.03 }}
       className="text-base md:text-lg leading-relaxed mb-6"
       style={{ color: 'var(--text-secondary)', fontFamily: "'Architects Daughter', cursive" }}
-    >
-      {children}
-    </motion.p>
+      dangerouslySetInnerHTML={{ __html: children }}
+    />
   )
 }
 
@@ -239,6 +238,16 @@ export default function BlogPostPage({ post }: { post: BlogPost }) {
             {post.content.map((section, i) => (
               <div key={i}>
                 <SectionHeading index={i}>{section.heading}</SectionHeading>
+                {section.svg && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: i * 0.03 + 0.1 }}
+                    className="sketch-border p-3 bg-white mb-4"
+                    style={{ boxShadow: '3px 3px 0px rgba(44,62,80,0.1)' }}
+                    dangerouslySetInnerHTML={{ __html: section.svg }}
+                  />
+                )}
                 <Paragraph index={i}>{section.body}</Paragraph>
               </div>
             ))}

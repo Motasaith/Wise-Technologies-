@@ -81,8 +81,54 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  const organizationSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'Wise Technologies',
+    url: 'https://wisetechryk.com',
+    logo: 'https://wisetechryk.com/logo.png',
+    description: 'Software house in Rahim Yar Khan, Pakistan. We build enterprise-grade web applications, scalable digital infrastructure, and custom software solutions.',
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Rahim Yar Khan',
+      addressRegion: 'Punjab',
+      addressCountry: 'PK',
+    },
+    contactPoint: {
+      '@type': 'ContactPoint',
+      contactType: 'customer service',
+      availableLanguage: ['English', 'Urdu'],
+    },
+    sameAs: [
+      'https://twitter.com/wisetechryk',
+      'https://linkedin.com/company/wisetechryk',
+    ],
+  }
+
+  const websiteSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'Wise Technologies',
+    url: 'https://wisetechryk.com',
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: 'https://wisetechryk.com/search?q={search_term_string}',
+      'query-input': 'required name=search_term_string',
+    },
+  }
+
   return (
     <html lang="en" className={`${instrumentSerif.variable} ${kalam.variable} ${caveat.variable}`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
+      </head>
       <body className="min-h-screen" style={{ backgroundColor: 'var(--bg)' }}>
         {children}
       </body>

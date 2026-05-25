@@ -120,12 +120,12 @@ export default function Blog() {
           className="text-center max-w-3xl mx-auto mb-16 relative"
         >
           <div className="inline-flex flex-col items-center gap-2 relative">
-            <h2
+            <h1
               className="text-4xl md:text-5xl font-bold text-[#2c3e50] mb-0 inline-block relative"
               style={{ fontFamily: "'Kalam', cursive" }}
             >
               <span className="highlight-pink">Wise Blog</span>
-            </h2>
+            </h1>
             <svg className="md:hidden w-12 h-12 text-[#2c3e50] transform rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
             </svg>
