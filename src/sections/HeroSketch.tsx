@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 
 /* Doodle SVG components */
 const SpiralBinding = () => (
-  <svg className="absolute left-0 top-0 h-full w-8 md:w-12" viewBox="0 0 40 800" preserveAspectRatio="none">
+  <svg className="absolute left-0 top-0 h-full w-8 md:w-12 hidden md:block" viewBox="0 0 40 800" preserveAspectRatio="none">
     {[...Array(24)].map((_, i) => (
       <ellipse
         key={i}
