@@ -365,21 +365,18 @@ export default function Footer() {
             <span className="text-[10px] text-[var(--text-muted)] italic" style={{ fontFamily: "'Caveat', cursive" }}>
               Crafted with precision in Pakistan
             </span>
-            <motion.div
+            <motion.button
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               whileHover={{ scale: 1.15, rotate: -5 }}
               transition={{ type: "spring", stiffness: 400 }}
+              className="sketch-border-thin p-1.5 inline-block cursor-pointer bg-transparent"
+              style={{ color: 'var(--text-muted)' }}
+              aria-label="Back to top"
             >
-              <Link
-                href="/"
-                className="sketch-border-thin p-1.5 inline-block"
-                style={{ color: 'var(--text-muted)' }}
-                aria-label="Back to top"
-              >
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-                  <path d="M8 14V2M4 6l4-4 4 4" />
-                </svg>
-              </Link>
-            </motion.div>
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                <path d="M8 14V2M4 6l4-4 4 4" />
+              </svg>
+            </motion.button>
           </motion.div>
         </motion.div>
       </div>
