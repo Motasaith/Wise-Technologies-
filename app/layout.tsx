@@ -24,9 +24,56 @@ const caveat = Caveat({
 })
 
 export const metadata: Metadata = {
-  title: 'Wise Technologies — A Web Solution Provider',
-  description: 'We sketch the Digital Future. Creative web design and development studio.',
-  keywords: ['web design', 'web development', 'creative agency', 'sketchbook design'],
+  metadataBase: new URL('https://wisetechryk.com'),
+  title: {
+    default: 'Wise Technologies — A Web Solution Provider',
+    template: '%s | Wise Technologies',
+  },
+  description: 'Wise Technologies is a software house in Rahim Yar Khan, Pakistan. We build enterprise-grade web applications, scalable digital infrastructure, and custom software solutions for modern businesses.',
+  keywords: ['software house', 'web development', 'web design', 'enterprise software', 'digital solutions', 'Rahim Yar Khan', 'Pakistan', 'custom software', 'app development', 'cloud solutions'],
+  authors: [{ name: 'Wise Technologies', url: 'https://wisetechryk.com' }],
+  creator: 'Wise Technologies',
+  publisher: 'Wise Technologies',
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'en_PK',
+    url: 'https://wisetechryk.com',
+    siteName: 'Wise Technologies',
+    title: 'Wise Technologies — A Web Solution Provider',
+    description: 'We build enterprise-grade web applications and custom software solutions for modern businesses.',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Wise Technologies — Software House in Rahim Yar Khan',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Wise Technologies — A Web Solution Provider',
+    description: 'We build enterprise-grade web applications and custom software solutions.',
+    images: ['/og-image.jpg'],
+    creator: '@wisetechryk',
+  },
+  alternates: {
+    canonical: 'https://wisetechryk.com',
+  },
+  verification: {
+    google: 'your-google-verification-code',
+  },
 }
 
 export default function RootLayout({

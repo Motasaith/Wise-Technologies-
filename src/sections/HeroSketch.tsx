@@ -39,7 +39,7 @@ const FloatingTerminal = ({ className = '' }: { className?: string }) => (
     <circle cx="8" cy="8" r="1" fill="#4A4A4A" opacity="0.4" />
     <circle cx="12" cy="8" r="1" fill="#4A4A4A" opacity="0.4" />
     <circle cx="16" cy="8" r="1" fill="#4A4A4A" opacity="0.4" />
-    <text x="8" y="26" fontSize="8" fill="#4A4A4A" opacity="0.5" fontFamily="monospace">>_</text>
+    <text x="8" y="26" fontSize="8" fill="#4A4A4A" opacity="0.5" fontFamily="monospace">{'>'}_</text>
   </svg>
 )
 
@@ -98,7 +98,7 @@ const FloatingCursor = ({ className = '' }: { className?: string }) => (
 )
 
 /* Floating wrapper with gentle bob animation */
-const Float = ({ children, delay = 0, duration = 5, x = 0, y = 0 }: { children: React.ReactNode; delay?: number; duration?: number; x?: number; y?: number }) => (
+const Float = ({ children, delay = 0, duration = 5, x = 0, y = 0 }: { children: React.ReactNode; delay?: number; duration?: number; x?: string | number; y?: string | number }) => (
   <motion.div
     className="absolute"
     style={{ left: x, top: y }}
