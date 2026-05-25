@@ -174,12 +174,17 @@ export default function Services() {
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto mb-16 relative"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-[#2c3e50] mb-4 inline-block relative" style={{ fontFamily: "'Kalam', cursive" }}>
-            <span className="highlight-yellow">All 13 Services</span>
-            <svg className="absolute -bottom-8 -right-12 w-16 h-16 text-[#2c3e50] transform rotate-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="inline-flex flex-col items-center gap-2 relative">
+            <h2 className="text-4xl md:text-5xl font-bold text-[#2c3e50] mb-0 inline-block relative" style={{ fontFamily: "'Kalam', cursive" }}>
+              <span className="highlight-yellow">All 13 Services</span>
+            </h2>
+            <svg className="md:hidden w-12 h-12 text-[#2c3e50] transform rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
             </svg>
-          </h2>
+            <svg className="hidden md:block absolute -bottom-8 -right-12 w-16 h-16 text-[#2c3e50] transform rotate-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </div>
           <p className="text-lg text-[var(--text-muted)] mt-4" style={{ fontFamily: "'Architects Daughter', cursive" }}>
             Comprehensive solutions for every need. Pick a sticky note!
           </p>
