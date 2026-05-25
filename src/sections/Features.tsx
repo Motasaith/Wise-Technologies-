@@ -65,7 +65,7 @@ function PostItCard({ card, index }: { card: typeof postIts[0]; index: number })
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, scale: 0.9, rotate: card.rotate - 3 }}
+      initial={{ scale: 0.96, rotate: card.rotate - 3 }}
       animate={isInView ? { opacity: 1, scale: 1, rotate: card.rotate } : {}}
       transition={{ duration: 0.5, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
       className={`flex flex-col h-full p-6 transition-all duration-200 hover:scale-105 hover:rotate-0 hover:z-20 ${card.isSpecial ? 'sketch-border' : ''}`}
