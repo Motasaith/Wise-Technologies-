@@ -9,6 +9,128 @@
   --font-serif: "Instrument Serif", serif;
 }
 
+/* Floating animations for doodles */
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(3deg); }
+}
+.animate-float { animation: float-slow 6s ease-in-out infinite; }
+.animate-float-delayed { animation: float-slow 7s ease-in-out 2s infinite; }
+
+/* Header slide down */
+@keyframes slide-down {
+  from { transform: translateY(-100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+.animate-slide-down { animation: slide-down 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
+/* Fade in down */
+@keyframes fade-in-down {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in-down { animation: fade-in-down 0.3s ease forwards; }
+
+/* Hand-drawn SVG stroke styling */
+.doodle-stroke {
+  stroke: #64748b;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+}
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+}
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Notebook grid background */
+.bg-notebook {
+  background-size: 40px 40px;
+  background-image:
+    linear-gradient(to right, rgba(203, 213, 225, 0.4) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(203, 213, 225, 0.4) 1px, transparent 1px);
+}
+
+/* Highlight text effect */
+.highlight {
+  position: relative;
+  display: inline-block;
+  z-index: 1;
+}
+.highlight::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  left: -2%;
+  width: 104%;
+  height: 30%;
+  background-color: rgba(255, 235, 59, 0.55);
+  z-index: -1;
+  transform: rotate(-1deg);
+  border-radius: 3px;
+}
+
+/* Sketch card */
+.sketch-card {
+  background: white;
+  border: 2px solid #2c3e50;
+  border-radius: 8px 255px 10px 15px / 255px 12px 225px 8px;
+  box-shadow: 6px 6px 0px rgba(44, 62, 80, 0.2);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.sketch-card:hover {
+  transform: translate(-4px, -4px) rotate(-1deg);
+  box-shadow: 10px 10px 0px rgba(44, 62, 80, 0.6);
+}
+
+/* Sketch button */
+.sketch-button {
+  border: 2px solid #2c3e50;
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+  transition: all 0.3s ease;
+}
+.sketch-button:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0px #2c3e50;
+}
+
+/* Lined paper background */
+.bg-lined-paper {
+  background-image: repeating-linear-gradient(transparent, transparent 31px, #D1C7B7 31px, #D1C7B7 32px);
+  background-attachment: local;
+  line-height: 32px;
+}
+
+/* Selection */
+::selection {
+  background-color: #e74c3c;
+  color: #fff;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: #D1C7B7;
+  border-radius: 10px;
+  border: 2px solid var(--bg);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #C8C0B0;
+}
+
 * {
   font-family: 'Almarai', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
 }
@@ -36,6 +158,7 @@ body {
   color: var(--text-primary);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 /* Sketch-style dashed borders — hand-drawn feel */
@@ -197,11 +320,6 @@ body {
   border-radius: 4px;
 }
 
-.sketch-border {
-  border: 2px dashed var(--border-color);
-  border-radius: 4px;
-}
-
 /* Clean card background */
 .paper-texture {
   background-color: var(--bg-card);
@@ -219,40 +337,13 @@ body {
 
 /* Subtle warm glow effects */
 .glow-accent {
-  box-shadow: 0 4px 20px rgba(74, 74, 74, 0.08);
+  box-shadow: 0 4px 20px rgba(79, 70, 229, 0.08);
 }
 
 .glow-purple {
-  box-shadow: 0 4px 20px rgba(74, 74, 74, 0.08);
+  box-shadow: 0 4px 20px rgba(79, 70, 229, 0.08);
 }
 
 .glow-coral {
-  box-shadow: 0 4px 20px rgba(74, 74, 74, 0.08);
-}
-
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--bg);
-}
-
-::-webkit-scrollbar-thumb {
-  background: #333;
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #555;
-}
-
-/* Light mode scrollbar */
-:root.light ::-webkit-scrollbar-thumb {
-  background: #ccc;
-}
-
-:root.light ::-webkit-scrollbar-thumb:hover {
-  background: #999;
+  box-shadow: 0 4px 20px rgba(79, 70, 229, 0.08);
 }

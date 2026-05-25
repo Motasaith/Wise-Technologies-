@@ -1,7 +1,9 @@
+"use client"
+
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { ArrowRight, Code, Cloud, Bot, Smartphone, Shield, Zap } from 'lucide-react'
-import { Link } from 'react-router-dom'
+import Link from 'next/link'
 
 const postIts = [
   {
@@ -122,7 +124,7 @@ export default function Features() {
 
         <div className="mt-16 text-center">
           <Link
-            to="/services"
+            href="/services"
             className="relative inline-flex items-center gap-3 px-8 py-4 text-lg font-bold"
             style={{ fontFamily: "'Kalam', cursive", color: '#2c3e50' }}
           >

@@ -1,7 +1,9 @@
+"use client"
+
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { ArrowLeft, Calendar, Clock, User } from 'lucide-react'
-import { Link } from 'react-router-dom'
+import Link from 'next/link'
 import WordsPullUpMultiStyle from '../components/WordsPullUpMultiStyle'
 
 const posts = [
@@ -195,7 +197,7 @@ export default function Blog() {
 
       <div className="relative z-10 max-w-5xl mx-auto">
         <Link
-          to="/"
+          href="/"
           className="inline-flex items-center gap-2 text-sm mb-8 transition-colors hover:text-accent"
           style={{ color: 'var(--text-muted)' }}
         >

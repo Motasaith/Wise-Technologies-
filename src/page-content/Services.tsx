@@ -1,3 +1,5 @@
+"use client"
+
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import {
@@ -17,7 +19,7 @@ import {
   Zap,
   Rocket,
 } from 'lucide-react'
-import { Link } from 'react-router-dom'
+import Link from 'next/link'
 
 const stickyColors = [
   '#feff9c',
@@ -157,7 +159,7 @@ export default function Services() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <Link
-          to="/"
+          href="/"
           className="inline-flex items-center gap-2 text-sm mb-8 transition-all duration-300 hover:-translate-y-1 hover:text-[#e74c3c]"
           style={{ color: 'var(--text-muted)', fontFamily: "'Kalam', cursive" }}
         >

@@ -1,3 +1,5 @@
+"use client"
+
 import { motion } from 'framer-motion'
 
 /* Doodle SVG components */
@@ -102,7 +104,7 @@ export default function HeroSketch() {
         className="absolute top-[15%] right-[4%] text-[10px] md:text-xs text-[var(--text-muted)] italic max-w-[120px] leading-relaxed"
         style={{ fontFamily: "'Caveat', cursive, sans-serif" }}
       >
-        "Code is poetry..."
+        "Precision in every line of code."
       </motion.p>
 
       <motion.p
@@ -112,7 +114,7 @@ export default function HeroSketch() {
         className="absolute bottom-[25%] right-[3%] text-[10px] md:text-xs text-[var(--text-muted)] italic max-w-[100px] leading-relaxed"
         style={{ fontFamily: "'Caveat', cursive, sans-serif" }}
       >
-        "Think. Build. Ship."
+        "Design. Develop. Deliver."
       </motion.p>
 
       <motion.p
@@ -122,7 +124,7 @@ export default function HeroSketch() {
         className="absolute top-[55%] right-[22%] text-[10px] md:text-xs text-[var(--text-muted)] italic"
         style={{ fontFamily: "'Caveat', cursive, sans-serif" }}
       >
-        "Stay curious"
+        "Excellence is in the details."
       </motion.p>
 
       {/* Main content grid */}
@@ -145,7 +147,7 @@ export default function HeroSketch() {
               className="text-lg md:text-xl text-[#e74c3c] border-b-2 border-dashed border-[#e74c3c]"
               style={{ fontFamily: "'Kalam', cursive" }}
             >
-              # Brainstorming Session 1
+              # Wise Technologies
             </span>
           </motion.div>
 
@@ -158,14 +160,9 @@ export default function HeroSketch() {
                 fontFamily: "'Kalam', cursive",
               }}
             >
-              <span className="block">We sketch the</span>
+              <span className="block">We Build the</span>
               <span
-                className="block mt-2"
-                style={{
-                  background: 'linear-gradient(104deg, rgba(255,235,59,0) 0.9%, rgba(255,235,59,0.8) 2.4%, rgba(255,235,59,0.5) 5.8%, rgba(255,235,59,0.9) 93%, rgba(255,235,59,0) 96%)',
-                  padding: '0 12px',
-                  display: 'inline-block',
-                }}
+                className="block mt-2 highlight"
               >
                 Digital Future
               </span>
@@ -191,12 +188,12 @@ export default function HeroSketch() {
             className="text-lg md:text-xl text-[var(--text-secondary)] leading-relaxed mb-8 max-w-md"
             style={{ fontFamily: "'Architects Daughter', cursive" }}
           >
-            We craft <span className="relative inline-block font-bold text-[var(--text-primary)]">
-              unique software
+            We build <span className="relative inline-block font-bold text-[var(--text-primary)]">
+              enterprise-grade software
               <svg className="absolute -bottom-1 left-0 w-full h-2" viewBox="0 0 100 8" preserveAspectRatio="none">
                 <path d="M0,4 Q20,0 40,4 T80,4 T100,4" stroke="#e74c3c" strokeWidth="2" fill="none" />
               </svg>
-            </span>, brilliant apps, and infrastructure that feels like a work of art.
+            </span>, scalable web applications, and robust digital infrastructure for modern businesses.
           </motion.p>
 
           {/* Sketch-style CTA buttons */}
@@ -219,16 +216,6 @@ export default function HeroSketch() {
                 <path d="M4 8h8M8 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeDasharray="2 2" />
               </svg>
             </a>
-
-            {/* Doodle arrow pointing to button */}
-            <div className="hidden sm:flex items-center gap-2 text-[var(--text-muted)] transform -rotate-12"
-              style={{ fontFamily: "'Kalam', cursive" }}
-            >
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                <path d="M18 10H2M10 4l-6 6 6 6" stroke="currentColor" strokeWidth="1.5" strokeDasharray="2 2" />
-              </svg>
-              Click this!
-            </div>
           </motion.div>
 
           {/* Little doodle icons row */}
@@ -240,10 +227,8 @@ export default function HeroSketch() {
           >
             <DoodleCheckbox />
             <DoodleLightbulb />
-            <DoodleHeart />
-            <DoodleSmiley />
-            <span className="text-[10px] text-[var(--text-muted)] italic ml-2" style={{ fontFamily: "'Caveat', cursive, sans-serif" }}>
-              made with love
+            <span className="text-xs text-[var(--text-muted)] italic ml-2" style={{ fontFamily: "'Caveat', cursive, sans-serif" }}>
+              trusted by 50+ clients
             </span>
           </motion.div>
         </motion.div>
@@ -290,7 +275,7 @@ export default function HeroSketch() {
               className="mt-3 text-center text-sm text-[var(--text-muted)]"
               style={{ fontFamily: "'Kalam', cursive" }}
             >
-              The team hard at work! 🚀
+              Transforming ideas into digital reality.
             </p>
           </div>
 
@@ -302,13 +287,13 @@ export default function HeroSketch() {
             className="absolute -bottom-6 -left-6 sketch-border p-4 bg-white transform -rotate-6 z-20 w-44"
             style={{ boxShadow: '3px 3px 0px rgba(44,62,80,0.1)' }}
           >
-            <p className="font-bold text-sm text-[#2c3e50]" style={{ fontFamily: "'Kalam', cursive" }}>Note to self:</p>
-            <p className="text-xs text-[var(--text-muted)]" style={{ fontFamily: "'Architects Daughter', cursive" }}>Make it look AWESOME.</p>
+            <p className="font-bold text-sm text-[#2c3e50]" style={{ fontFamily: "'Kalam', cursive" }}>Our Mission:</p>
+            <p className="text-xs text-[var(--text-muted)]" style={{ fontFamily: "'Architects Daughter', cursive" }}>Deliver cutting-edge technology solutions.</p>
             <div className="mt-2 text-[#e74c3c] text-xs flex items-center gap-1" style={{ fontFamily: "'Kalam', cursive" }}>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M18 7l-8 8-4-4" />
               </svg>
-              Done!
+              Since 2020
             </div>
           </motion.div>
 
