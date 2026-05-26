@@ -28,7 +28,7 @@ export default function Blog() {
     publisher: {
       '@type': 'Organization',
       name: 'Wise Technologies',
-      logo: 'https://wisetechryk.com/logo.png',
+      logo: 'https://wisetechryk.com/logo.svg',
     },
   }
 

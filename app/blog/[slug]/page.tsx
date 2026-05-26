@@ -59,7 +59,7 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
       name: 'Wise Technologies',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://wisetechryk.com/logo.png',
+        url: 'https://wisetechryk.com/logo.svg',
       },
     },
     mainEntityOfPage: {

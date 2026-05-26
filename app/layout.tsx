@@ -86,7 +86,7 @@ export default function RootLayout({
     '@type': 'Organization',
     name: 'Wise Technologies',
     url: 'https://wisetechryk.com',
-    logo: 'https://wisetechryk.com/logo.png',
+    logo: 'https://wisetechryk.com/logo.svg',
     description: 'Software house in Rahim Yar Khan, Pakistan. We build enterprise-grade web applications, scalable digital infrastructure, and custom software solutions.',
     address: {
       '@type': 'PostalAddress',

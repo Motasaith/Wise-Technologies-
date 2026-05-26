@@ -1,14 +1,43 @@
 "use client"
 
 import { motion, useInView } from 'framer-motion'
-import { useRef } from 'react'
+import { useRef, useEffect, useState } from 'react'
 import { Users, Award, Briefcase } from 'lucide-react'
 import WordsPullUpMultiStyle from '../components/WordsPullUpMultiStyle'
 
+function CountUp({ end, suffix = '', duration = 2 }: { end: number; suffix?: string; duration?: number }) {
+  const [count, setCount] = useState(0)
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true })
+
+  useEffect(() => {
+    if (!isInView) return
+    let start = 0
+    const increment = end / (duration * 60)
+    const timer = setInterval(() => {
+      start += increment
+      if (start >= end) {
+        setCount(end)
+        clearInterval(timer)
+      } else {
+        setCount(Math.floor(start))
+      }
+    }, 1000 / 60)
+    return () => clearInterval(timer)
+  }, [isInView, end, duration])
+
+  return (
+    <span ref={ref}>
+      {count}
+      {suffix}
+    </span>
+  )
+}
+
 const stats = [
-  { value: 275, label: 'Projects Done', icon: Briefcase, color: 'text-primary' },
-  { value: 144, label: 'Happy Clients', icon: Users, color: 'text-primary' },
-  { value: 17, label: 'Award Winner', icon: Award, color: 'text-primary' },
+  { value: 275, suffix: '+', label: 'Projects Done', icon: Briefcase, color: 'text-primary' },
+  { value: 144, suffix: '+', label: 'Happy Clients', icon: Users, color: 'text-primary' },
+  { value: 17, suffix: '', label: 'Award Winner', icon: Award, color: 'text-primary' },
 ]
 
 const teamPolaroids = [
@@ -87,7 +116,9 @@ export default function About() {
                 className="text-center p-4 md:p-6 sketch-border paper-texture"
               >
                 <Icon className={`w-6 h-6 mx-auto mb-2 ${stat.color}`} />
-                <div className={`text-3xl sm:text-4xl md:text-5xl font-bold mb-1 ${stat.color}`}>{stat.value}</div>
+                <div className={`text-3xl sm:text-4xl md:text-5xl font-bold mb-1 ${stat.color}`}>
+                  <CountUp end={stat.value} suffix={stat.suffix} />
+                </div>
                 <p className="text-xs md:text-sm" style={{ color: 'var(--text-muted)' }}>{stat.label}</p>
               </motion.div>
             )

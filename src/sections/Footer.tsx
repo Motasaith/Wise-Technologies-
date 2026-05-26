@@ -202,15 +202,15 @@ export default function Footer() {
               <div className="space-y-2">
                 <div className="flex items-center gap-2 text-xs" style={{ color: 'var(--text-muted)' }}>
                   <MapPin className="w-3.5 h-3.5 text-[#e74c3c]" />
-                  <span style={{ fontFamily: "'Kalam', cursive" }}>R-130, Rahim Garden, RYK</span>
+                  <span style={{ fontFamily: "'Kalam', cursive" }}>Rahim Yar Khan, Pakistan</span>
                 </div>
                 <div className="flex items-center gap-2 text-xs" style={{ color: 'var(--text-muted)' }}>
                   <Mail className="w-3.5 h-3.5 text-[#e74c3c]" />
-                  <span style={{ fontFamily: "'Kalam', cursive" }}>hello@wisetech.com</span>
+                  <span style={{ fontFamily: "'Kalam', cursive" }}>info@wisetechnologiesryk.com</span>
                 </div>
                 <div className="flex items-center gap-2 text-xs" style={{ color: 'var(--text-muted)' }}>
                   <Phone className="w-3.5 h-3.5 text-[#e74c3c]" />
-                  <span style={{ fontFamily: "'Kalam', cursive" }}>+92 300 1234567</span>
+                  <span style={{ fontFamily: "'Kalam', cursive" }}>+92 300 6705727</span>
                 </div>
               </div>
             </div>
