@@ -1,0 +1,25 @@
+import type { MetadataRoute } from 'next'
+
+export default function manifest(): MetadataRoute.Manifest {
+  return {
+    name: 'Wise Technologies — Web Solution Provider',
+    short_name: 'Wise Technologies',
+    description: 'Software house in Rahim Yar Khan, Pakistan. We build enterprise-grade web applications and custom software solutions.',
+    start_url: '/',
+    display: 'standalone',
+    background_color: '#ffffff',
+    theme_color: '#2c3e50',
+    icons: [
+      {
+        src: '/icon-192x192.png',
+        sizes: '192x192',
+        type: 'image/png',
+      },
+      {
+        src: '/icon-512x512.png',
+        sizes: '512x512',
+        type: 'image/png',
+      },
+    ],
+  }
+}

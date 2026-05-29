@@ -1,4 +1,5 @@
 "use client"
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { useEffect, useRef } from "react"
 import { animate, createDrawable } from "animejs"
@@ -57,7 +58,7 @@ export default function SketchDrawSVG({
 
       paths.forEach((path, i) => {
         animate(path, {
-          strokeDashoffset: [drawables[i][0].length, 0],
+          strokeDashoffset: [(drawables[i][0] as any).length, 0],
           ease: "inOutSine",
           duration,
           delay: delay + i * 150,

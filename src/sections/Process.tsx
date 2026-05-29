@@ -3,7 +3,6 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { Code, Palette, Rocket, Wrench } from 'lucide-react'
-import SketchDrawSVG from '../components/SketchDrawSVG'
 import ElasticStagger from '../components/ElasticStagger'
 import PaperCrumble from '../components/PaperCrumble'
 

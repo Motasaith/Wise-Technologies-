@@ -3,7 +3,7 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import Link from 'next/link'
-import { ArrowLeft, Calendar, Clock, User, Share2, MessageCircle, Globe, ExternalLink, Copy, Check } from 'lucide-react'
+import { ArrowLeft, Calendar, Clock, User, MessageCircle, Globe, ExternalLink, Copy, Check } from 'lucide-react'
 import type { BlogPost } from '@/src/data/blogData'
 import Header from '@/src/components/Header'
 import Footer from '@/src/sections/Footer'

@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     title: 'Our Services — Wise Technologies',
     description: '13+ services including web development, AI integration, cloud solutions, and cybersecurity.',
     type: 'website',
-    images: ['/og-image.jpg'],
+    images: ['/og-image.webp'],
   },
   alternates: {
     canonical: 'https://wisetechryk.com/services',

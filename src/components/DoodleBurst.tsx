@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useCallback } from "react"
 import { animate } from "animejs"
 
 interface DoodleBurstProps {
@@ -8,6 +8,7 @@ interface DoodleBurstProps {
   trigger?: "click" | "hover" | "inview"
   particleCount?: number
   colors?: string[]
+  children?: React.ReactNode
 }
 
 /**
@@ -16,6 +17,7 @@ interface DoodleBurstProps {
  * button clicks or section reveals.
  */
 export default function DoodleBurst({
+  children,
   className = "",
   trigger = "inview",
   particleCount = 20,
@@ -24,7 +26,7 @@ export default function DoodleBurst({
   const containerRef = useRef<HTMLDivElement>(null)
   const hasAnimated = useRef(false)
 
-  const createParticles = () => {
+  const createParticles = useCallback(() => {
     const container = containerRef.current
     if (!container) return
 
@@ -80,7 +82,7 @@ export default function DoodleBurst({
         onComplete: () => svg.remove(),
       })
     }
-  }
+  }, [particleCount, colors])
 
   useEffect(() => {
     const container = containerRef.current
@@ -111,7 +113,7 @@ export default function DoodleBurst({
       container.addEventListener("mouseenter", createParticles)
       return () => container.removeEventListener("mouseenter", createParticles)
     }
-  }, [trigger])
+  }, [trigger, createParticles])
 
   return (
     <div ref={containerRef} className={`relative inline-block ${className}`}>

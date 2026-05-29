@@ -21,13 +21,7 @@ const ScribbleDivider = () => (
   </svg>
 )
 
-/* Doodle checkbox */
-const DoodleCheckbox = ({ checked = true }: { checked?: boolean }) => (
-  <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-    <rect x="1" y="1" width="16" height="16" rx="2" stroke="#4A4A4A" strokeWidth="1.5" strokeDasharray="3 2" fill="none" opacity="0.5" />
-    {checked && <path d="M4 9 L7 12 L13 6" stroke="#e74c3c" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" />}
-  </svg>
-)
+/* Doodle checkbox removed (unused) */
 
 function BlogCard({ post, index }: { post: typeof blogPosts[0]; index: number }) {
   const ref = useRef(null)

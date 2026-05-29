@@ -1,7 +1,8 @@
 "use client"
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { useEffect, useRef } from "react"
-import { animate, stagger, createTimeline } from "animejs"
+import { stagger, createTimeline } from "animejs"
 
 interface HandwrittenTextProps {
   text: string

@@ -1,5 +1,7 @@
 import type { Metadata } from 'next'
 import { Instrument_Serif, Kalam, Caveat } from 'next/font/google'
+import { Analytics } from '@vercel/analytics/react'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 import './globals.css'
 
 const instrumentSerif = Instrument_Serif({
@@ -54,7 +56,7 @@ export const metadata: Metadata = {
     description: 'We build enterprise-grade web applications and custom software solutions for modern businesses.',
     images: [
       {
-        url: '/og-image.jpg',
+        url: '/og-image.webp',
         width: 1200,
         height: 630,
         alt: 'Wise Technologies — Software House in Rahim Yar Khan',
@@ -65,7 +67,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Wise Technologies — A Web Solution Provider',
     description: 'We build enterprise-grade web applications and custom software solutions.',
-    images: ['/og-image.jpg'],
+    images: ['/og-image.webp'],
     creator: '@wisetechryk',
   },
   alternates: {
@@ -128,9 +130,19 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
       <body className="min-h-screen" style={{ backgroundColor: 'var(--bg)' }}>
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-[#2c3e50] focus:text-white focus:rounded-lg"
+        >
+          Skip to main content
+        </a>
         {children}
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   )

@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Wise Technologies — A Web Solution Provider',
     description: 'We build the Digital Future. Enterprise software, web apps, and cloud solutions.',
-    images: ['/og-image.jpg'],
+    images: ['/og-image.webp'],
   },
 }
 
@@ -25,7 +25,7 @@ export default function HomePage() {
     <>
       <PencilCursor color="#4A4A4A" strokeWidth={2} maxTrailLength={35} />
       <Header />
-      <main className="relative">
+      <main id="main-content" className="relative">
         <HeroSketch />
         <About />
         <Features />

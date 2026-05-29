@@ -11,11 +11,39 @@ export default function Contact() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-100px' })
   const [sent, setSent] = useState(false)
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' })
+  const [errors, setErrors] = useState<Record<string, string>>({})
+
+  const validateForm = () => {
+    const newErrors: Record<string, string> = {}
+    if (!formData.name.trim()) newErrors.name = 'Name is required'
+    if (!formData.email.trim()) {
+      newErrors.email = 'Email is required'
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = 'Please enter a valid email'
+    }
+    if (!formData.message.trim()) newErrors.message = 'Message is required'
+    setErrors(newErrors)
+    return Object.keys(newErrors).length === 0
+  }
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
+    if (!validateForm()) return
     setSent(true)
+    setFormData({ name: '', email: '', message: '' })
     setTimeout(() => setSent(false), 5000)
+  }
+
+  const handleChange = (field: string, value: string) => {
+    setFormData(prev => ({ ...prev, [field]: value }))
+    if (errors[field]) {
+      setErrors(prev => {
+        const newErrors = { ...prev }
+        delete newErrors[field]
+        return newErrors
+      })
+    }
   }
 
   return (
@@ -70,40 +98,58 @@ export default function Contact() {
             style={{ fontFamily: "'Architects Daughter', cursive" }}
           >
             <div className="mb-2">
-              <label className="font-bold mr-2 text-[#2c3e50] text-lg" style={{ fontFamily: "'Kalam', cursive" }}>
+              <label htmlFor="contact-name" className="font-bold mr-2 text-[#2c3e50] text-lg" style={{ fontFamily: "'Kalam', cursive" }}>
                 Hello, my name is
               </label>
               <input
+                id="contact-name"
                 type="text"
                 placeholder="your name..."
                 required
+                value={formData.name}
+                onChange={(e) => handleChange('name', e.target.value)}
+                aria-invalid={errors.name ? 'true' : 'false'}
+                aria-describedby={errors.name ? 'name-error' : undefined}
                 className="bg-transparent border-b-2 border-dashed border-[var(--text-muted)] focus:border-[#e74c3c] outline-none px-2 py-1 w-full sm:w-auto mt-2 sm:mt-0 text-[#2c3e50] placeholder-gray-400 text-lg"
               />
+              {errors.name && <p id="name-error" className="text-red-500 text-sm mt-1" role="alert">{errors.name}</p>}
             </div>
 
             <div className="mb-2">
-              <label className="font-bold mr-2 text-[#2c3e50] text-lg" style={{ fontFamily: "'Kalam', cursive" }}>
+              <label htmlFor="contact-email" className="font-bold mr-2 text-[#2c3e50] text-lg" style={{ fontFamily: "'Kalam', cursive" }}>
                 You can email me at
               </label>
               <input
+                id="contact-email"
                 type="email"
                 placeholder="your@email.com..."
                 required
+                value={formData.email}
+                onChange={(e) => handleChange('email', e.target.value)}
+                aria-invalid={errors.email ? 'true' : 'false'}
+                aria-describedby={errors.email ? 'email-error' : undefined}
                 className="bg-transparent border-b-2 border-dashed border-[var(--text-muted)] focus:border-[#e74c3c] outline-none px-2 py-1 w-full sm:w-auto mt-2 sm:mt-0 text-[#2c3e50] placeholder-gray-400 text-lg"
               />
+              {errors.email && <p id="email-error" className="text-red-500 text-sm mt-1" role="alert">{errors.email}</p>}
             </div>
 
             <div className="mb-2">
-              <label className="font-bold block mb-2 text-[#2c3e50] text-lg" style={{ fontFamily: "'Kalam', cursive" }}>
+              <label htmlFor="contact-message" className="font-bold block mb-2 text-[#2c3e50] text-lg" style={{ fontFamily: "'Kalam', cursive" }}>
                 I want to talk about:
               </label>
               <textarea
+                id="contact-message"
                 rows={3}
                 placeholder="I have this awesome idea for..."
                 required
+                value={formData.message}
+                onChange={(e) => handleChange('message', e.target.value)}
+                aria-invalid={errors.message ? 'true' : 'false'}
+                aria-describedby={errors.message ? 'message-error' : undefined}
                 className="w-full bg-transparent border-2 border-dashed border-[var(--text-muted)] focus:border-[#e74c3c] outline-none p-4 text-[#2c3e50] resize-none rounded-lg text-lg"
                 style={{ lineHeight: '2rem' }}
               />
+              {errors.message && <p id="message-error" className="text-red-500 text-sm mt-1" role="alert">{errors.message}</p>}
             </div>
 
             <div className="text-center mt-8">

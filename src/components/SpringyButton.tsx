@@ -1,4 +1,5 @@
 "use client"
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { useEffect, useRef } from "react"
 import { animate, createSpring } from "animejs"
@@ -92,7 +93,7 @@ export default function SpringyButton({
     transformOrigin: "center center",
   }
 
-  if (href) {
+    if (href) {
     return (
       <a
         ref={buttonRef as any}
@@ -108,7 +109,7 @@ export default function SpringyButton({
 
   return (
     <button
-      ref={buttonRef}
+      ref={buttonRef as any}
       className={baseClasses}
       style={style}
       onClick={onClick}

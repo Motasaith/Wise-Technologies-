@@ -1,7 +1,8 @@
 "use client"
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { useEffect, useRef } from "react"
-import { animate, scrambleText } from "animejs"
+import { scrambleText } from "animejs"
 
 interface ScrambleRevealProps {
   text: string
@@ -38,7 +39,7 @@ export default function ScrambleReveal({
       if (hasAnimated.current) return
       hasAnimated.current = true
 
-      scrambleText(container, {
+      ;(scrambleText as any)(container, {
         text,
         duration,
         delay,

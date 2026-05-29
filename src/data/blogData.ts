@@ -1,3 +1,5 @@
+/* eslint-disable no-useless-escape */
+
 export interface BlogPost {
   slug: string
   title: string

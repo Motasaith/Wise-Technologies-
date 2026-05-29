@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     title: 'Wise Technologies Blog',
     description: 'Expert insights on AI, development, and automation.',
     type: 'website',
-    images: ['/og-image.jpg'],
+    images: ['/og-image.webp'],
   },
   alternates: {
     canonical: 'https://wisetechryk.com/blog',

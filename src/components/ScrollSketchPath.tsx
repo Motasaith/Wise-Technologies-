@@ -1,4 +1,5 @@
 "use client"
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { useEffect, useRef } from "react"
 import { animate, createMotionPath, createDrawable, onScroll } from "animejs"
@@ -58,7 +59,7 @@ export default function ScrollSketchPath({
       // Also draw the path stroke as you scroll
       const drawable = createDrawable(path, 0, 1)
       animate(path, {
-        strokeDashoffset: [drawable[0].length, 0],
+        strokeDashoffset: [(drawable[0] as any).length, 0],
         ease: "linear",
         duration,
         autoplay: onScroll({

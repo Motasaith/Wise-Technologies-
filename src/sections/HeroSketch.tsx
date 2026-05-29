@@ -334,7 +334,6 @@ export default function HeroSketch() {
             style={{ boxShadow: '5px 5px 0px rgba(44,62,80,0.15)' }}
           >
             <video
-              src="/hero_section.mp4"
               autoPlay
               muted
               loop
@@ -343,8 +342,14 @@ export default function HeroSketch() {
               disableRemotePlayback
               controls={false}
               className="w-full h-auto object-cover pointer-events-none select-none rounded-sm"
+              poster="/og-image.avif"
               style={{ display: 'block', filter: 'sepia(0.3) contrast(1.25)' }}
-            />
+            >
+              <source src="/hero_section-optimized.webm" type="video/webm" />
+              <source src="/hero_section-optimized.mp4" type="video/mp4" />
+              {/* fallback */}
+              <source src="/hero_section.mp4" type="video/mp4" />
+            </video>
 
             {/* Caption below video like a notebook annotation */}
             <p

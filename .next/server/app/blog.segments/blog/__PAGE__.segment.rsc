@@ -1,0 +1,8 @@
+1:"$Sreact.fragment"
+2:I[2971,["/_next/static/chunks/088ak5z4vq-d-.js","/_next/static/chunks/0d3shmwh5_nmn.js","/_next/static/chunks/0d6xthv6lz_9f.js","/_next/static/chunks/1007z0k8gogyc.js"],"default"]
+3:I[43621,["/_next/static/chunks/088ak5z4vq-d-.js","/_next/static/chunks/0d3shmwh5_nmn.js","/_next/static/chunks/0d6xthv6lz_9f.js","/_next/static/chunks/1007z0k8gogyc.js"],"default"]
+4:I[78934,["/_next/static/chunks/088ak5z4vq-d-.js","/_next/static/chunks/0d3shmwh5_nmn.js","/_next/static/chunks/0d6xthv6lz_9f.js","/_next/static/chunks/1007z0k8gogyc.js"],"default"]
+5:I[97367,["/_next/static/chunks/088ak5z4vq-d-.js","/_next/static/chunks/0d3shmwh5_nmn.js"],"OutletBoundary"]
+6:"$Sreact.suspense"
+0:{"rsc":["$","$1","c",{"children":[["$","div",null,{"children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Blog\",\"name\":\"Wise Technologies Blog\",\"url\":\"https://wisetechryk.com/blog\",\"description\":\"Expert insights on AI infrastructure, local LLMs, web development, and design trends.\",\"publisher\":{\"@type\":\"Organization\",\"name\":\"Wise Technologies\",\"logo\":\"https://wisetechryk.com/logo.svg\"}}"}}],["$","$L2",null,{}],["$","main",null,{"children":["$","$L3",null,{}]}],["$","$L4",null,{}]]}],[["$","script","script-0",{"src":"/_next/static/chunks/0d6xthv6lz_9f.js","async":true}],["$","script","script-1",{"src":"/_next/static/chunks/1007z0k8gogyc.js","async":true}]],["$","$L5",null,{"children":["$","$6",null,{"name":"Next.MetadataOutlet","children":"$@7"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"3_FSH_6_yXWJ_A22Zq4SX"}
+7:null

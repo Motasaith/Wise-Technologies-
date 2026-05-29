@@ -41,6 +41,7 @@ export default function Header() {
   return (
     <header
       className="fixed top-0 left-0 right-0 z-50 px-4 md:px-8 py-3 md:py-4 animate-slide-down"
+      role="banner"
     >
       <div
         className="max-w-6xl mx-auto sketch-border bg-white/90 backdrop-blur-sm px-4 md:px-6 py-2 transition-shadow duration-300"
@@ -51,15 +52,15 @@ export default function Header() {
         <div className="flex items-center justify-between h-14">
           {/* Logo with lightbulb */}
           <div className="flex items-center gap-2">
-            <Link href="/" className="flex items-center gap-2">
+            <Link href="/" className="flex items-center gap-2" aria-label="Wise Technologies Home">
               <Lightbulb className="w-6 h-6 text-[#e74c3c] animate-pulse" />
               <Logo className="h-7 md:h-9 w-auto" />
             </Link>
           </div>
 
           {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-6">
-            <nav className="flex items-center gap-6">
+          <nav className="hidden md:flex items-center gap-6" aria-label="Main navigation">
+            <div className="flex items-center gap-6">
               {navItems.map((item) => (
                 <Link
                   key={item.label}
@@ -73,7 +74,7 @@ export default function Header() {
                   </span>
                 </Link>
               ))}
-            </nav>
+            </div>
 
             {/* Say Hello CTA */}
             <Link
@@ -83,12 +84,15 @@ export default function Header() {
             >
               Say Hello!
             </Link>
-          </div>
+          </nav>
 
           {/* Mobile Menu Button */}
           <button
             className="md:hidden text-[var(--text-primary)] focus:outline-none p-2"
             onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={mobileOpen}
+            aria-controls="mobile-menu"
           >
             {mobileOpen ? <X className="w-6 h-6" /> : <Pen className="w-6 h-6" />}
           </button>
@@ -97,7 +101,11 @@ export default function Header() {
 
       {/* Mobile Menu Dropdown */}
       {mobileOpen && (
-        <div className="md:hidden absolute left-4 right-4 top-24 z-40 sketch-border bg-white/95 backdrop-blur-sm p-4 animate-fade-in-down"
+        <div
+          id="mobile-menu"
+          className="md:hidden absolute left-4 right-4 top-24 z-40 sketch-border bg-white/95 backdrop-blur-sm p-4 animate-fade-in-down"
+          role="dialog"
+          aria-label="Mobile navigation"
         >
           <div className="flex flex-col items-center gap-4">
             {navItems.map((item) => (

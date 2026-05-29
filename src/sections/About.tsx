@@ -64,6 +64,12 @@ const Tape = () => (
 export default function About() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-100px' })
+  const [rotates, setRotates] = useState<number[]>([])
+
+  useEffect(() => {
+    const t = setTimeout(() => setRotates(stats.map(() => (Math.random() - 0.5) * 4)), 0)
+    return () => clearTimeout(t)
+  }, [])
 
   return (
     <section id="about" className="py-20 md:py-32 px-4 md:px-6 relative overflow-hidden"
@@ -115,7 +121,7 @@ export default function About() {
                 distance={30}
                 duration={0.6}
                 delay={0.4 + i * 0.1}
-                rotate={(Math.random() - 0.5) * 4}
+                rotate={rotates[i]}
               >
                 <div className="text-center p-4 md:p-6 sketch-border paper-texture">
                   <Icon className={`w-6 h-6 mx-auto mb-2 ${stat.color}`} />

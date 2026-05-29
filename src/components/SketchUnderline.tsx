@@ -1,4 +1,5 @@
 "use client"
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { useEffect, useRef } from "react"
 import { animate, createDrawable } from "animejs"
@@ -72,7 +73,7 @@ export default function SketchUnderline({
       path.style.strokeLinejoin = "round"
 
       const drawable = createDrawable(path, 0, 1)
-      path.style.strokeDashoffset = `${drawable[0].length}`
+      path.style.strokeDashoffset = `${(drawable[0] as any).length}`
     }
 
     updatePath()
@@ -84,7 +85,7 @@ export default function SketchUnderline({
       updatePath()
 
       animate(path, {
-        strokeDashoffset: [createDrawable(path, 0, 1)[0].length, 0],
+        strokeDashoffset: [(createDrawable(path, 0, 1)[0] as any).length, 0],
         ease: "inOutSine",
         duration,
         delay,

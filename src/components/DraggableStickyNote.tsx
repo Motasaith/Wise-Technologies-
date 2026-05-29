@@ -1,4 +1,5 @@
 "use client"
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { useEffect, useRef } from "react"
 import { animate, createDraggable } from "animejs"
@@ -37,28 +38,30 @@ export default function DraggableStickyNote({
     note.style.transform = `translate(${defaultX}px, ${defaultY}px) rotate(${rotate}deg)`
 
     // Make draggable with anime.js
-    const draggable = createDraggable(note, {
-      container: document.body,
-      snap: 15,
-      inertia: true,
-      revert: false,
-      onDragStart: () => {
-        animate(note, {
-          scale: 1.05,
-          rotate: 0,
-          ease: "outExpo",
-          duration: 200,
-        })
-      },
-      onDragEnd: () => {
-        animate(note, {
-          scale: 1,
-          rotate: (Math.random() - 0.5) * 6,
-          ease: "outElastic(1, .6)",
-          duration: 600,
-        })
-      },
-    })
+    const draggable = createDraggable(note, (
+      {
+        container: document.body,
+        snap: 15,
+        inertia: true,
+        revert: false,
+        onDragStart: () => {
+          animate(note, {
+            scale: 1.05,
+            rotate: 0,
+            ease: "outExpo",
+            duration: 200,
+          })
+        },
+        onDragEnd: () => {
+          animate(note, {
+            scale: 1,
+            rotate: (Math.random() - 0.5) * 6,
+            ease: "outElastic(1, .6)",
+            duration: 600,
+          })
+        },
+      }
+    ) as any)
 
     return () => {
       draggable.revert()
