@@ -1,25 +1,37 @@
 "use client"
 
 import { motion } from 'framer-motion'
+import SketchDrawSVG from '../components/SketchDrawSVG'
+import HandwrittenText from '../components/HandwrittenText'
+import SketchUnderline from '../components/SketchUnderline'
 
 /* Doodle SVG components */
 const SpiralBinding = () => (
-  <svg className="absolute left-0 top-0 h-full w-8 md:w-12 hidden md:block" viewBox="0 0 40 800" preserveAspectRatio="none">
-    {[...Array(24)].map((_, i) => (
-      <ellipse
-        key={i}
-        cx="20"
-        cy={30 + i * 32}
-        rx="14"
-        ry="8"
-        fill="none"
-        stroke="#4A4A4A"
-        strokeWidth="1.5"
-        strokeDasharray="4 2"
-        opacity="0.7"
-      />
-    ))}
-  </svg>
+  <SketchDrawSVG
+    className="absolute left-0 top-0 h-full w-8 md:w-12 hidden md:block"
+    strokeColor="#4A4A4A"
+    strokeWidth={1.5}
+    duration={1500}
+    delay={500}
+    trigger="mount"
+  >
+    <svg viewBox="0 0 40 800" preserveAspectRatio="none">
+      {[...Array(24)].map((_, i) => (
+        <ellipse
+          key={i}
+          cx="20"
+          cy={30 + i * 32}
+          rx="14"
+          ry="8"
+          fill="none"
+          stroke="#4A4A4A"
+          strokeWidth="1.5"
+          strokeDasharray="4 2"
+          opacity="0.7"
+        />
+      ))}
+    </svg>
+  </SketchDrawSVG>
 )
 
 /* Floating tech doodles */
@@ -216,24 +228,38 @@ export default function HeroSketch() {
                 fontFamily: "'Kalam', cursive",
               }}
             >
-              <span className="block">We Build the</span>
-              <span
-                className="block mt-2 highlight"
-              >
-                Digital Future
-              </span>
-            </h1>
-            {/* Sketch underline */}
-            <svg className="absolute -bottom-2 left-0 w-[80%] h-4" viewBox="0 0 300 16" preserveAspectRatio="none">
-              <path
-                d="M2 8 Q 75 2, 150 10 T 298 6"
-                stroke="#4A4A4A"
-                strokeWidth="2"
-                strokeDasharray="6 4"
-                fill="none"
-                opacity="0.5"
+              <HandwrittenText
+                text="We Build the"
+                tag="span"
+                className="block"
+                color="#2c3e50"
+                duration={50}
+                trigger="mount"
               />
-            </svg>
+              <SketchUnderline
+                className="block mt-2"
+                color="#e74c3c"
+                strokeWidth={3}
+                duration={1500}
+                delay={800}
+                wobble={8}
+              >
+                <span className="highlight">Digital Future</span>
+              </SketchUnderline>
+            </h1>
+            {/* Decorative sketch underline */}
+            <SketchDrawSVG className="absolute -bottom-2 left-0 w-[80%] h-4" trigger="mount" delay={1200} duration={1200}>
+              <svg viewBox="0 0 300 16" preserveAspectRatio="none">
+                <path
+                  d="M2 8 Q 75 2, 150 10 T 298 6"
+                  stroke="#4A4A4A"
+                  strokeWidth="2"
+                  strokeDasharray="6 4"
+                  fill="none"
+                  opacity="0.5"
+                />
+              </svg>
+            </SketchDrawSVG>
           </div>
 
           {/* Tagline */}

@@ -4,6 +4,9 @@ import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { ArrowRight, Code, Cloud, Bot, Smartphone, Shield, Zap } from 'lucide-react'
 import Link from 'next/link'
+import ElasticStagger from '../components/ElasticStagger'
+import PaperCrumble from '../components/PaperCrumble'
+import SketchDrawSVG from '../components/SketchDrawSVG'
 
 const postIts = [
   {
@@ -98,11 +101,17 @@ export default function Features() {
       style={{ backgroundColor: 'var(--bg)' }}
     >
       {/* SVG Scribble Divider */}
-      <div className="absolute top-0 left-0 w-full overflow-hidden text-[#2c3e50]/20 transform -translate-y-1/2 flex justify-center">
+      <SketchDrawSVG
+        className="absolute top-0 left-0 w-full overflow-hidden text-[#2c3e50]/20 transform -translate-y-1/2 flex justify-center"
+        strokeColor="#2c3e50"
+        strokeWidth={3}
+        duration={2000}
+        trigger="inview"
+      >
         <svg width="300" height="40" viewBox="0 0 300 40" xmlns="http://www.w3.org/2000/svg">
           <path d="M5,20 Q40,5 75,20 T145,20 T215,20 T285,20" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
         </svg>
-      </div>
+      </SketchDrawSVG>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16 relative">
@@ -120,11 +129,18 @@ export default function Features() {
         </div>
 
         {/* Sticky Notes Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-14 mt-12">
+        <ElasticStagger
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-14 mt-12"
+          staggerDelay={120}
+          duration={900}
+          trigger="inview"
+        >
           {postIts.map((card, i) => (
-            <PostItCard key={i} card={card} index={i} />
+            <PaperCrumble key={i} duration={1000} delay={i * 100}>
+              <PostItCard card={card} index={i} />
+            </PaperCrumble>
           ))}
-        </div>
+        </ElasticStagger>
 
         <div className="mt-16 text-center">
           <Link

@@ -3,6 +3,9 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { Code, Palette, Rocket, Wrench } from 'lucide-react'
+import SketchDrawSVG from '../components/SketchDrawSVG'
+import ElasticStagger from '../components/ElasticStagger'
+import PaperCrumble from '../components/PaperCrumble'
 
 const steps = [
   {
@@ -74,39 +77,38 @@ export default function Process() {
         </motion.div>
 
         {/* Steps */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <ElasticStagger
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+          staggerDelay={150}
+          duration={900}
+          trigger="inview"
+        >
           {steps.map((step, i) => {
             const Icon = step.icon
             return (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 30, scale: 0.95 }}
-                animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
-                transition={{
-                  duration: 0.6,
-                  delay: i * 0.15,
-                  ease: [0.22, 1, 0.36, 1],
-                }}
-                className={`relative p-6 md:p-8 ${step.borderColor} paper-texture ${step.glow} transition-all duration-500 hover:scale-[1.02]`}
-              >
-                <div className={`text-5xl md:text-6xl font-bold opacity-10 absolute top-4 right-4 ${step.color}`}>
-                  {step.number}
-                </div>
-                <div className={`w-12 h-12 rounded-full flex items-center justify-center mb-4 ${step.color}`}
-                  style={{ backgroundColor: 'var(--bg-card-alt)' }}
+              <PaperCrumble key={i} duration={1000} delay={i * 120}>
+                <div
+                  className={`relative p-6 md:p-8 ${step.borderColor} paper-texture ${step.glow} transition-all duration-500 hover:scale-[1.02]`}
                 >
-                  <Icon className="w-5 h-5" />
+                  <div className={`text-5xl md:text-6xl font-bold opacity-10 absolute top-4 right-4 ${step.color}`}>
+                    {step.number}
+                  </div>
+                  <div className={`w-12 h-12 rounded-full flex items-center justify-center mb-4 ${step.color}`}
+                    style={{ backgroundColor: 'var(--bg-card-alt)' }}
+                  >
+                    <Icon className="w-5 h-5" />
+                  </div>
+                  <h3 className="text-lg md:text-xl font-medium mb-2"
+                    style={{ color: 'var(--text-primary)' }}
+                  >{step.title}</h3>
+                  <p className="text-xs md:text-sm leading-relaxed"
+                    style={{ color: 'var(--text-muted)' }}
+                  >{step.description}</p>
                 </div>
-                <h3 className="text-lg md:text-xl font-medium mb-2"
-                  style={{ color: 'var(--text-primary)' }}
-                >{step.title}</h3>
-                <p className="text-xs md:text-sm leading-relaxed"
-                  style={{ color: 'var(--text-muted)' }}
-                >{step.description}</p>
-              </motion.div>
+              </PaperCrumble>
             )
           })}
-        </div>
+        </ElasticStagger>
       </div>
     </section>
   )
