@@ -3,6 +3,7 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { Quote } from 'lucide-react'
+import PaperCrumble from '../components/PaperCrumble'
 
 const testimonials = [
   {
@@ -60,34 +61,28 @@ export default function Testimonials() {
         {/* Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {testimonials.map((t, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 30, scale: 0.95 }}
-              animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
-              transition={{
-                duration: 0.6,
-                delay: i * 0.15,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-              className={`relative p-6 md:p-8 border-2 ${t.color} paper-texture ${t.glow} transition-all duration-500 hover:scale-[1.02]`}
-              style={{ borderRadius: '255px 15px 225px 15px / 15px 225px 15px 255px' }}
-            >
-              <Quote className="w-8 h-8 mb-4" style={{ color: 'var(--text-muted)' }} />
-              <p className="text-sm md:text-base leading-relaxed mb-6"
-                style={{ color: 'var(--text-secondary)' }}
-              >{t.quote}</p>
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full flex items-center justify-center"
-                  style={{ backgroundColor: 'var(--bg-card-alt)' }}
-                >
-                  <span className="text-sm font-medium" style={{ color: 'var(--text-primary)' }}>{t.author[0]}</span>
-                </div>
-                <div>
-                  <p className="text-sm font-medium" style={{ color: 'var(--text-primary)' }}>{t.author}</p>
-                  <p className="text-xs" style={{ color: 'var(--text-muted)' }}>{t.role}</p>
+            <PaperCrumble key={i} duration={1000} delay={i * 150}>
+              <div
+                className={`relative p-6 md:p-8 border-2 ${t.color} paper-texture ${t.glow} transition-all duration-500 hover:scale-[1.02]`}
+                style={{ borderRadius: '255px 15px 225px 15px / 15px 225px 15px 255px' }}
+              >
+                <Quote className="w-8 h-8 mb-4" style={{ color: 'var(--text-muted)' }} />
+                <p className="text-sm md:text-base leading-relaxed mb-6"
+                  style={{ color: 'var(--text-secondary)' }}
+                >{t.quote}</p>
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full flex items-center justify-center"
+                    style={{ backgroundColor: 'var(--bg-card-alt)' }}
+                  >
+                    <span className="text-sm font-medium" style={{ color: 'var(--text-primary)' }}>{t.author[0]}</span>
+                  </div>
+                  <div>
+                    <p className="text-sm font-medium" style={{ color: 'var(--text-primary)' }}>{t.author}</p>
+                    <p className="text-xs" style={{ color: 'var(--text-muted)' }}>{t.role}</p>
+                  </div>
                 </div>
               </div>
-            </motion.div>
+            </PaperCrumble>
           ))}
         </div>
       </div>

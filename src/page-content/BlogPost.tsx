@@ -1,7 +1,7 @@
 "use client"
 
 import { motion, useInView } from 'framer-motion'
-import { useRef, useState } from 'react'
+import { useRef } from 'react'
 import Link from 'next/link'
 import { ArrowLeft, Calendar, Clock, User, Share2, MessageCircle, Globe, ExternalLink, Copy, Check } from 'lucide-react'
 import type { BlogPost } from '@/src/data/blogData'
@@ -88,6 +88,7 @@ function ShareButtons({ title, url }: { title: string; url: string }) {
   )
 }
 
+import { useState } from 'react'
 
 function SectionHeading({ children, index }: { children: string; index: number }) {
   const ref = useRef(null)

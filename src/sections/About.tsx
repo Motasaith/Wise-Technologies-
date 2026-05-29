@@ -4,6 +4,7 @@ import { motion, useInView } from 'framer-motion'
 import { useRef, useEffect, useState } from 'react'
 import { Users, Award, Briefcase } from 'lucide-react'
 import WordsPullUpMultiStyle from '../components/WordsPullUpMultiStyle'
+import ScrollReveal from '../components/ScrollReveal'
 
 function CountUp({ end, suffix = '', duration = 2 }: { end: number; suffix?: string; duration?: number }) {
   const [count, setCount] = useState(0)
@@ -108,19 +109,22 @@ export default function About() {
           {stats.map((stat, i) => {
             const Icon = stat.icon
             return (
-              <motion.div
+              <ScrollReveal
                 key={i}
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: 0.4 + i * 0.1 }}
-                className="text-center p-4 md:p-6 sketch-border paper-texture"
+                from="bottom"
+                distance={30}
+                duration={0.6}
+                delay={0.4 + i * 0.1}
+                rotate={(Math.random() - 0.5) * 4}
               >
-                <Icon className={`w-6 h-6 mx-auto mb-2 ${stat.color}`} />
-                <div className={`text-3xl sm:text-4xl md:text-5xl font-bold mb-1 ${stat.color}`}>
-                  <CountUp end={stat.value} suffix={stat.suffix} />
+                <div className="text-center p-4 md:p-6 sketch-border paper-texture">
+                  <Icon className={`w-6 h-6 mx-auto mb-2 ${stat.color}`} />
+                  <div className={`text-3xl sm:text-4xl md:text-5xl font-bold mb-1 ${stat.color}`}>
+                    <CountUp end={stat.value} suffix={stat.suffix} />
+                  </div>
+                  <p className="text-xs md:text-sm" style={{ color: 'var(--text-muted)' }}>{stat.label}</p>
                 </div>
-                <p className="text-xs md:text-sm" style={{ color: 'var(--text-muted)' }}>{stat.label}</p>
-              </motion.div>
+              </ScrollReveal>
             )
           })}
         </div>

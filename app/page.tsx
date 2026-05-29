@@ -9,7 +9,6 @@ import Testimonials from '@/src/sections/Testimonials'
 import Contact from '@/src/sections/Contact'
 import Footer from '@/src/sections/Footer'
 import PencilCursor from '@/src/components/PencilCursor'
-import MorphingDoodle from '@/src/components/MorphingDoodle'
 
 export const metadata: Metadata = {
   title: 'Wise Technologies — A Web Solution Provider',
@@ -36,11 +35,6 @@ export default function HomePage() {
         <Contact />
       </main>
       <Footer />
-
-      {/* Decorative morphing doodle in corner */}
-      <div className="fixed bottom-8 right-8 z-50 hidden lg:block pointer-events-none">
-        <MorphingDoodle size={80} color="#4A4A4A" strokeWidth={1.5} duration={2500} />
-      </div>
     </>
   )
 }

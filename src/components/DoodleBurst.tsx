@@ -115,7 +115,7 @@ export default function DoodleBurst({
 
   return (
     <div ref={containerRef} className={`relative inline-block ${className}`}>
-      {/* Children go here if needed, or use as wrapper */}
+      {children}
     </div>
   )
 }

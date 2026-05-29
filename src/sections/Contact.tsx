@@ -3,6 +3,9 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef, useState } from 'react'
 import { Mail, MapPin, Phone, Check } from 'lucide-react'
+import SpringyButton from '../components/SpringyButton'
+import ScrambleReveal from '../components/ScrambleReveal'
+import DoodleBurst from '../components/DoodleBurst'
 
 export default function Contact() {
   const ref = useRef(null)
@@ -21,15 +24,14 @@ export default function Contact() {
     >
       <div ref={ref} className="max-w-4xl mx-auto relative z-10">
         <div className="text-center mb-12">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6 }}
+          <ScrambleReveal
+            text="Drop us a line!"
+            tag="h2"
             className="text-4xl sm:text-5xl md:text-6xl font-bold text-[#2c3e50] mb-4"
-            style={{ fontFamily: "'Kalam', cursive" }}
-          >
-            Drop us a line!
-          </motion.h2>
+            duration={1200}
+            trigger="inview"
+            chars="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%"
+          />
           <motion.p
             initial={{ opacity: 0, y: 10 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -105,32 +107,32 @@ export default function Contact() {
             </div>
 
             <div className="text-center mt-8">
-              <button
-                type="submit"
-                className="relative inline-flex items-center gap-2 px-6 py-3 text-xl font-bold transform -rotate-2 hover:rotate-2 transition-transform"
-                style={{ fontFamily: "'Kalam', cursive", color: '#2c3e50' }}
+              <SpringyButton
+                onClick={() => {}}
+                color="#2c3e50"
+                bgColor="#ffeb3b"
+                className="transform -rotate-2"
               >
-                <span className="absolute inset-0 border-2 border-[#2c3e50] -z-10"
-                  style={{ borderRadius: '255px 15px 225px 15px / 15px 225px 15px 255px', background: '#ffeb3b' }}
-                />
                 Send it via Paper Plane!
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
                 </svg>
-              </button>
+              </SpringyButton>
             </div>
 
             {/* Success Message */}
             {sent && (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
+              <DoodleBurst
                 className="mt-6 text-center font-bold text-xl text-green-600 bg-white/80 p-4 rounded-lg sketch-border"
-                style={{ fontFamily: "'Kalam', cursive" }}
+                trigger="inview"
+                particleCount={30}
+                colors={["#2ecc71", "#3498db", "#f1c40f", "#e74c3c", "#9b59b6"]}
               >
-                <Check className="w-5 h-5 inline mr-2" />
-                Woosh! Message sent successfully. We'll chat soon!
-              </motion.div>
+                <span style={{ fontFamily: "'Kalam', cursive" }}>
+                  <Check className="w-5 h-5 inline mr-2" />
+                  Woosh! Message sent successfully. We'll chat soon!
+                </span>
+              </DoodleBurst>
             )}
           </form>
         </motion.div>

@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import SketchDrawSVG from '../components/SketchDrawSVG'
 import HandwrittenText from '../components/HandwrittenText'
 import SketchUnderline from '../components/SketchUnderline'
+import SpringyButton from '../components/SpringyButton'
 
 /* Doodle SVG components */
 const SpiralBinding = () => (
@@ -285,19 +286,12 @@ export default function HeroSketch() {
             transition={{ delay: 0.6, duration: 0.6 }}
             className="flex flex-wrap gap-6 items-center"
           >
-            <a
-              href="#about"
-              className="relative inline-flex items-center gap-2 px-6 py-3 text-lg font-bold"
-              style={{ fontFamily: "'Kalam', cursive", color: '#2c3e50' }}
-            >
-              <span className="absolute inset-0 border-2 border-[#2c3e50] -z-10 transition-all duration-200 hover:scale-105"
-                style={{ borderRadius: '255px 15px 225px 15px / 15px 225px 15px 255px', background: '#ffeb3b' }}
-              />
+            <SpringyButton href="#about" color="#2c3e50" bgColor="#ffeb3b">
               Explore Our Work
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                 <path d="M4 8h8M8 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeDasharray="2 2" />
               </svg>
-            </a>
+            </SpringyButton>
           </motion.div>
 
           {/* Little doodle icons row */}

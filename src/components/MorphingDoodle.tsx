@@ -13,30 +13,30 @@ interface MorphingDoodleProps {
 
 /**
  * MorphingDoodle — A playful SVG shape that morphs between different
- * sketchy doodle forms (star, cloud, gear, heart). Perfect as a decorative
- * element that brings life to the sketchbook theme.
+ * sketchy doodle forms. All shapes are centered in the same viewBox
+ * for smooth, seamless morphing.
  */
 export default function MorphingDoodle({
   className = "",
-  size = 120,
+  size = 80,
   color = "#4A4A4A",
-  strokeWidth = 2,
-  duration = 3000,
+  strokeWidth = 1.5,
+  duration = 2500,
 }: MorphingDoodleProps) {
   const pathRef = useRef<SVGPathElement>(null)
   const containerRef = useRef<HTMLDivElement>(null)
   const hasAnimated = useRef(false)
 
-  // Sketchy path data for different shapes
+  // All shapes centered in 100x100 viewBox for smooth morphing
   const shapes = [
-    // Star (rough/hand-drawn)
-    "M60,5 L72,40 L110,40 L80,62 L92,97 L60,75 L28,97 L40,62 L10,40 L48,40 Z",
-    // Cloud
-    "M25,65 Q10,65 10,50 Q10,35 25,35 Q30,15 50,15 Q70,15 75,35 Q90,35 90,50 Q90,65 75,65 Z",
-    // Gear
-    "M60,10 L65,25 L80,20 L85,35 L70,40 L75,55 L60,60 L55,75 L40,70 L35,85 L20,80 L25,65 L10,60 L15,45 L5,35 L20,30 L15,15 L30,20 L35,5 L50,10 L55,5 Z",
-    // Heart
-    "M60,30 Q60,10 40,10 Q20,10 20,30 Q20,50 60,90 Q100,50 100,30 Q100,10 80,10 Q60,10 60,30 Z",
+    // Star — centered at (50,50)
+    "M50,8 L58,35 L88,35 L64,52 L72,80 L50,64 L28,80 L36,52 L12,35 L42,35 Z",
+    // Cloud — centered at (50,50)
+    "M20,60 Q8,60 8,48 Q8,36 20,36 Q24,20 42,20 Q56,12 72,20 Q88,16 92,32 Q100,32 100,44 Q100,56 88,56 Q88,68 72,68 L20,60",
+    // Gear — centered at (50,50)
+    "M50,15 L54,26 L66,22 L70,34 L60,38 L62,50 L72,54 L70,66 L58,64 L54,76 L46,76 L42,64 L30,66 L28,54 L38,50 L40,38 L30,34 L34,22 L46,26 Z",
+    // Heart — centered at (50,50)
+    "M50,28 Q50,12 34,12 Q18,12 18,28 Q18,44 50,72 Q82,44 82,28 Q82,12 66,12 Q50,12 50,28 Z",
   ]
 
   useEffect(() => {
@@ -67,12 +67,14 @@ export default function MorphingDoodle({
         })
       })
 
-      // Also rotate and scale slightly
+      // Gentle floating sway instead of fast spin
       animate(container, {
-        rotate: [0, 360],
-        duration: 20000,
+        rotate: [-6, 6],
+        translateY: [-4, 4],
+        duration: 4000,
         loop: true,
-        ease: "linear",
+        alternate: true,
+        ease: "inOutSine",
       })
     }
 
@@ -96,7 +98,7 @@ export default function MorphingDoodle({
       <svg
         width={size}
         height={size}
-        viewBox="0 0 120 100"
+        viewBox="0 0 100 100"
         fill="none"
       >
         <path ref={pathRef} />
