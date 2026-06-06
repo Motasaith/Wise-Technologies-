@@ -1,24 +1,26 @@
 import type { MetadataRoute } from 'next'
+import { servicesData } from '@/src/data/servicesData'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://wisetechryk.com'
+  const staticDate = new Date('2026-06-06')
 
-  return [
+  const coreRoutes: MetadataRoute.Sitemap = [
     {
       url: baseUrl,
-      lastModified: new Date(),
+      lastModified: staticDate,
       changeFrequency: 'weekly',
       priority: 1,
     },
     {
       url: `${baseUrl}/services`,
-      lastModified: new Date(),
+      lastModified: staticDate,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
       url: `${baseUrl}/blog`,
-      lastModified: new Date(),
+      lastModified: staticDate,
       changeFrequency: 'weekly',
       priority: 0.9,
     },
@@ -71,4 +73,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
   ]
+
+  const serviceRoutes: MetadataRoute.Sitemap = servicesData.map((service) => ({
+    url: `${baseUrl}/services/${service.slug}`,
+    lastModified: staticDate,
+    changeFrequency: 'monthly',
+    priority: 0.75,
+  }))
+
+  return [...coreRoutes, ...serviceRoutes]
 }

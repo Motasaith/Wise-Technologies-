@@ -3,6 +3,7 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { ArrowLeft, Calendar, Clock, User, MessageCircle, Globe, ExternalLink, Copy, Check } from 'lucide-react'
 import type { BlogPost } from '@/src/data/blogData'
 import Header from '@/src/components/Header'
@@ -167,9 +168,11 @@ export default function BlogPostPage({ post }: { post: BlogPost }) {
             <div className="sketch-border p-2 md:p-3 bg-white transform rotate-1"
               style={{ boxShadow: '5px 5px 0px rgba(44,62,80,0.15)' }}
             >
-              <img
+              <Image
                 src={post.image}
                 alt={post.title}
+                width={800}
+                height={450}
                 className="w-full h-64 md:h-80 object-cover rounded-sm"
               />
             </div>

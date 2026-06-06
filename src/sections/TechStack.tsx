@@ -1,7 +1,7 @@
 "use client"
 
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { useRef } from 'react'
+import { useRef, useState, useEffect } from 'react'
 
 const techLogos = [
   { name: 'PHP', src: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/php.svg' },
@@ -32,23 +32,33 @@ const techLogos = [
   { name: 'LangChain', src: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/langchain.svg' },
 ]
 
+/* Pre-compute deterministic scatter values at module level to avoid hydration issues */
+const scatterData = techLogos.map((_, index) => ({
+  randomX: Math.round(Math.sin(index * 137.5) * 200 + 200),
+  randomY: Math.round(Math.cos(index * 73.3) * 150 + 150),
+  randomRot: Math.round(Math.sin(index * 51.7) * 180),
+  randomScale: Math.round((0.3 + Math.abs(Math.sin(index * 91.1)) * 0.7) * 1000) / 1000,
+}))
+
 function CrumbleLogo({ logo, index }: { logo: typeof techLogos[0]; index: number }) {
   const ref = useRef(null)
+  const [isMounted, setIsMounted] = useState(false)
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ['start end', 'center center'],
   })
 
-  const randomX = (Math.sin(index * 137.5) * 200 + 200)
-  const randomY = (Math.cos(index * 73.3) * 150 + 150)
-  const randomRot = (Math.sin(index * 51.7) * 180)
-  const randomScale = 0.3 + Math.abs(Math.sin(index * 91.1)) * 0.7
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
 
-  const x = useTransform(scrollYProgress, [0, 1], [randomX, 0])
-  const y = useTransform(scrollYProgress, [0, 1], [randomY, 0])
-  const rotate = useTransform(scrollYProgress, [0, 1], [randomRot, 0])
-  const scale = useTransform(scrollYProgress, [0, 1], [randomScale, 1])
-  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0, 0.6, 1])
+  const scatter = scatterData[index]
+
+  const x = useTransform(scrollYProgress, [0, 1], [isMounted ? scatter.randomX : 0, 0])
+  const y = useTransform(scrollYProgress, [0, 1], [isMounted ? scatter.randomY : 0, 0])
+  const rotate = useTransform(scrollYProgress, [0, 1], [isMounted ? scatter.randomRot : 0, 0])
+  const scale = useTransform(scrollYProgress, [0, 1], [isMounted ? scatter.randomScale : 1, 1])
+  const opacity = useTransform(scrollYProgress, [0, 0.3, 1], [0, 1, 1])
 
   return (
     <motion.div
@@ -61,6 +71,8 @@ function CrumbleLogo({ logo, index }: { logo: typeof techLogos[0]; index: number
         <img
           src={logo.src}
           alt={logo.name}
+          width={96}
+          height={96}
           className="w-full h-full object-contain tech-icon"
           loading="lazy"
         />

@@ -21,6 +21,8 @@ import {
 } from 'lucide-react'
 import Link from 'next/link'
 
+import { servicesData, type ServiceItem } from '@/src/data/servicesData'
+
 const stickyColors = [
   '#feff9c',
   '#7afcff',
@@ -37,108 +39,41 @@ const stickyColors = [
   '#dcedc8',
 ]
 
-const allServices = [
-  {
-    title: 'Web Development',
-    desc: 'Custom websites, e-commerce, CMS, web apps, APIs, and full-stack solutions.',
-    icon: Globe,
-  },
-  {
-    title: 'Search Engine Optimization',
-    desc: 'On-page & off-page SEO, technical SEO, keyword strategy, and analytics.',
-    icon: Search,
-  },
-  {
-    title: 'Website Maintenance',
-    desc: 'Regular updates, security patches, performance optimization, and backups.',
-    icon: Wrench,
-  },
-  {
-    title: 'Digital Marketing',
-    desc: 'PPC, social media marketing, content strategy, and conversion optimization.',
-    icon: Megaphone,
-  },
-  {
-    title: 'Mobile App Development',
-    desc: 'Native iOS & Android, cross-platform apps with React Native & Flutter.',
-    icon: Smartphone,
-  },
-  {
-    title: 'WordPress Themes & Plugins',
-    desc: 'Custom themes, plugin development, WooCommerce, and Elementor.',
-    icon: Palette,
-  },
-  {
-    title: 'Website Security',
-    desc: 'SSL, malware removal, firewall, DDoS protection, and security audits.',
-    icon: Shield,
-  },
-  {
-    title: 'Content Writing',
-    desc: 'SEO blogs, website copy, product descriptions, and technical content.',
-    icon: FileText,
-  },
-  {
-    title: 'Full Stack Development',
-    desc: 'MERN/MEAN stack, databases, REST/GraphQL APIs, and DevOps.',
-    icon: Layers,
-  },
-  {
-    title: 'AI Integrated Apps',
-    desc: 'OpenAI/GPT, Claude, chatbots, AI content generation, and smart engines.',
-    icon: Bot,
-  },
-  {
-    title: 'Computer Vision & Automation',
-    desc: 'Image recognition, OCR, workflow automation with n8n/Zapier, and RPA.',
-    icon: Eye,
-  },
-  {
-    title: 'Progressive Web Apps',
-    desc: 'Offline-first architecture, push notifications, and installable design.',
-    icon: Zap,
-  },
-  {
-    title: 'Vibe Coding & MVP',
-    desc: 'Rapid prototypes, AI-assisted code, lean MVP strategy, and fast validation.',
-    icon: Rocket,
-  },
-]
-
-function StickyNote({ service, index }: { service: typeof allServices[0]; index: number }) {
+function StickyNote({ service, index }: { service: ServiceItem; index: number }) {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-50px' })
   const Icon = service.icon
   const color = stickyColors[index % stickyColors.length]
-  const rotate = [-2, 1, -1, 2, -3, 1, -1, 3, -2, 1, -1, 2, -2][index]
+  const rotate = [-2, 1, -1, 2, -3, 1, -1, 3, -2, 1, -1, 2, -2][index % 13]
 
   return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, scale: 0.85, rotate: rotate - 5 }}
-      animate={isInView ? { opacity: 1, scale: 1, rotate } : {}}
-      transition={{ duration: 0.5, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
-      className="flex flex-col h-full p-6 transition-all duration-200 hover:scale-105 hover:rotate-0 hover:z-20 cursor-pointer"
-      style={{
-        background: color,
-        boxShadow: '3px 5px 10px rgba(0,0,0,0.15)',
-        transform: `rotate(${rotate}deg)`,
-      }}
-    >
-      <div className="text-3xl mb-3 text-[#2c3e50]">
-        <Icon className="w-8 h-8" />
-      </div>
-      <h3 className="font-bold text-xl mb-2 text-[#2c3e50]" style={{ fontFamily: "'Kalam', cursive" }}>
-        {service.title}
-      </h3>
-      <p className="text-[#2c3e50]/80 flex-grow text-base leading-relaxed" style={{ fontFamily: "'Architects Daughter', cursive" }}>
-        {service.desc}
-      </p>
-      <div className="mt-4 pt-3 border-t border-[#2c3e50]/20 font-bold text-sm text-[#2c3e50] flex items-center gap-1" style={{ fontFamily: "'Kalam', cursive" }}>
-        <ArrowRight className="w-4 h-4" />
-        Learn more
-      </div>
-    </motion.div>
+    <Link href={`/services/${service.slug}`} className="block h-full">
+      <motion.div
+        ref={ref}
+        initial={{ opacity: 0, scale: 0.85, rotate: rotate - 5 }}
+        animate={isInView ? { opacity: 1, scale: 1, rotate } : {}}
+        transition={{ duration: 0.5, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
+        className="flex flex-col h-full p-6 transition-all duration-200 hover:scale-105 hover:rotate-0 hover:z-20 cursor-pointer"
+        style={{
+          background: color,
+          boxShadow: '3px 5px 10px rgba(0,0,0,0.15)',
+        }}
+      >
+        <div className="text-3xl mb-3 text-[#2c3e50]">
+          <Icon className="w-8 h-8" />
+        </div>
+        <h3 className="font-bold text-xl mb-2 text-[#2c3e50]" style={{ fontFamily: "'Kalam', cursive" }}>
+          {service.title}
+        </h3>
+        <p className="text-[#2c3e50]/80 flex-grow text-base leading-relaxed" style={{ fontFamily: "'Architects Daughter', cursive" }}>
+          {service.desc}
+        </p>
+        <div className="mt-4 pt-3 border-t border-[#2c3e50]/20 font-bold text-sm text-[#2c3e50] flex items-center gap-1" style={{ fontFamily: "'Kalam', cursive" }}>
+          <ArrowRight className="w-4 h-4" />
+          Learn more
+        </div>
+      </motion.div>
+    </Link>
   )
 }
 
@@ -192,7 +127,7 @@ export default function Services() {
 
         {/* Sticky Notes Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-14 mt-12">
-          {allServices.map((service, i) => (
+          {servicesData.map((service, i) => (
             <StickyNote key={i} service={service} index={i} />
           ))}
         </div>

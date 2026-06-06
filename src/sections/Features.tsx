@@ -16,6 +16,7 @@ const postIts = [
     cta: "Let's build!",
     color: '#feff9c',
     rotate: -1,
+    slug: 'web-development',
   },
   {
     icon: Cloud,
@@ -24,6 +25,7 @@ const postIts = [
     cta: 'Scale up!',
     color: '#7afcff',
     rotate: 2,
+    slug: 'full-stack-development',
   },
   {
     icon: Bot,
@@ -32,6 +34,7 @@ const postIts = [
     cta: 'Get smarter!',
     color: '#ff7eb9',
     rotate: -2,
+    slug: 'ai-integrated-apps',
   },
   {
     icon: Smartphone,
@@ -40,6 +43,7 @@ const postIts = [
     cta: 'See designs!',
     color: '#ffd699',
     rotate: 1,
+    slug: 'mobile-app-development',
   },
   {
     icon: Shield,
@@ -48,6 +52,7 @@ const postIts = [
     cta: 'Stay safe!',
     color: '#c5f9a8',
     rotate: -3,
+    slug: 'website-security',
   },
   {
     icon: Zap,
@@ -57,6 +62,7 @@ const postIts = [
     color: '#e2c5ff',
     rotate: 2,
     isSpecial: true,
+    slug: 'vibe-coding-mvp',
   },
 ]
 
@@ -66,32 +72,33 @@ function PostItCard({ card, index }: { card: typeof postIts[0]; index: number })
   const Icon = card.icon
 
   return (
-    <motion.div
-      ref={ref}
-      initial={{ scale: 0.96, rotate: card.rotate - 3 }}
-      animate={isInView ? { opacity: 1, scale: 1, rotate: card.rotate } : {}}
-      transition={{ duration: 0.5, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
-      className={`flex flex-col h-full p-6 transition-all duration-200 hover:scale-105 hover:rotate-0 hover:z-20 ${card.isSpecial ? 'sketch-border' : ''}`}
-      style={{
-        background: card.color,
-        boxShadow: card.isSpecial ? '5px 5px 0px rgba(44,62,80,0.2)' : '3px 5px 10px rgba(0,0,0,0.15)',
-        transform: `rotate(${card.rotate}deg)`,
-      }}
-    >
-      <div className="text-3xl mb-3 text-[#2c3e50]">
-        <Icon className="w-8 h-8" />
-      </div>
-      <h3 className="font-bold text-xl mb-2 text-[#2c3e50]" style={{ fontFamily: "'Kalam', cursive" }}>
-        {card.title}
-      </h3>
-      <p className="text-[#2c3e50]/80 flex-grow text-base leading-relaxed" style={{ fontFamily: "'Architects Daughter', cursive" }}>
-        {card.desc}
-      </p>
-      <div className="mt-4 pt-3 border-t border-[#2c3e50]/20 font-bold text-sm text-[#2c3e50] flex items-center gap-1" style={{ fontFamily: "'Kalam', cursive" }}>
-        <ArrowRight className="w-4 h-4" />
-        {card.cta}
-      </div>
-    </motion.div>
+    <Link href={`/services/${card.slug}`} className="block h-full">
+      <motion.div
+        ref={ref}
+        initial={{ opacity: 0, scale: 0.96, rotate: card.rotate - 3 }}
+        animate={isInView ? { opacity: 1, scale: 1, rotate: card.rotate } : {}}
+        transition={{ duration: 0.5, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
+        className={`flex flex-col h-full p-6 transition-all duration-200 hover:scale-105 hover:rotate-0 hover:z-20 ${card.isSpecial ? 'sketch-border' : ''}`}
+        style={{
+          background: card.color,
+          boxShadow: card.isSpecial ? '5px 5px 0px rgba(44,62,80,0.2)' : '3px 5px 10px rgba(0,0,0,0.15)',
+        }}
+      >
+        <div className="text-3xl mb-3 text-[#2c3e50]">
+          <Icon className="w-8 h-8" />
+        </div>
+        <h3 className="font-bold text-xl mb-2 text-[#2c3e50]" style={{ fontFamily: "'Kalam', cursive" }}>
+          {card.title}
+        </h3>
+        <p className="text-[#2c3e50]/80 flex-grow text-base leading-relaxed" style={{ fontFamily: "'Architects Daughter', cursive" }}>
+          {card.desc}
+        </p>
+        <div className="mt-4 pt-3 border-t border-[#2c3e50]/20 font-bold text-sm text-[#2c3e50] flex items-center gap-1" style={{ fontFamily: "'Kalam', cursive" }}>
+          <ArrowRight className="w-4 h-4" />
+          {card.cta}
+        </div>
+      </motion.div>
+    </Link>
   )
 }
 

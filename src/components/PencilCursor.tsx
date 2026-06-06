@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef, useCallback } from "react"
+import { useEffect, useRef, useCallback, useState } from "react"
 
 interface PencilCursorProps {
   color?: string
@@ -29,6 +29,7 @@ export default function PencilCursor({
   const rafRef = useRef<number>(0)
   const isMovingRef = useRef(false)
   const idleTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const [isTouch, setIsTouch] = useState<boolean | null>(null)
 
   const getSmoothPoint = useCallback(() => {
     const target = mouseRef.current
@@ -39,8 +40,13 @@ export default function PencilCursor({
   }, [smoothing])
 
   useEffect(() => {
-    // Only show on desktop
-    if (typeof window === "undefined" || "ontouchstart" in window) return
+    // Detect touch device after mount
+    setIsTouch("ontouchstart" in window)
+  }, [])
+
+  useEffect(() => {
+    // Only show on desktop (non-touch)
+    if (isTouch === null || isTouch) return
 
     const svg = svgRef.current
     const path = pathRef.current
@@ -111,12 +117,10 @@ export default function PencilCursor({
       cancelAnimationFrame(rafRef.current)
       if (idleTimerRef.current) clearTimeout(idleTimerRef.current)
     }
-  }, [getSmoothPoint, maxTrailLength, strokeWidth])
+  }, [isTouch, getSmoothPoint, maxTrailLength, strokeWidth])
 
-  // Don't render on touch devices
-  if (typeof window !== "undefined" && "ontouchstart" in window) {
-    return null
-  }
+  // Don't render on touch devices (determined after mount)
+  if (isTouch) return null
 
   return (
     <svg
@@ -142,3 +146,4 @@ export default function PencilCursor({
     </svg>
   )
 }
+

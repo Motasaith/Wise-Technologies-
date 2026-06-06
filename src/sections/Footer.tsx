@@ -353,7 +353,7 @@ export default function Footer() {
               <circle cx="8" cy="8" r="6" stroke="#e74c3c" strokeWidth="1.5" strokeDasharray="3 2" fill="none" />
               <text x="5.5" y="11" fontSize="9" fill="#e74c3c">C</text>
             </svg>
-            © {new Date().getFullYear()} Wise Technologies RYK. All Rights Reserved.
+            © 2026 Wise Technologies RYK. All Rights Reserved.
           </motion.p>
 
           <motion.div 

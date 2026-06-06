@@ -76,6 +76,12 @@ export const metadata: Metadata = {
   verification: {
     google: 'your-google-verification-code',
   },
+  other: {
+    'geo.region': 'PK-PB',
+    'geo.placename': 'Rahim Yar Khan',
+    'geo.position': '28.4212;70.2989',
+    'ICBM': '28.4212, 70.2989',
+  },
 }
 
 export default function RootLayout({
@@ -119,6 +125,46 @@ export default function RootLayout({
     },
   }
 
+  const localBusinessSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'LocalBusiness',
+    name: 'Wise Technologies RYK',
+    image: 'https://wisetechryk.com/og-image.webp',
+    '@id': 'https://wisetechryk.com/#localbusiness',
+    url: 'https://wisetechryk.com',
+    telephone: '+923000000000',
+    priceRange: '$$',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Main Town',
+      addressLocality: 'Rahim Yar Khan',
+      postalCode: '64200',
+      addressRegion: 'Punjab',
+      addressCountry: 'PK',
+    },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: 28.4212,
+      longitude: 70.2989,
+    },
+    openingHoursSpecification: {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: [
+        'Monday',
+        'Tuesday',
+        'Wednesday',
+        'Thursday',
+        'Friday',
+      ],
+      opens: '09:00',
+      closes: '18:00',
+    },
+    sameAs: [
+      'https://twitter.com/wisetechryk',
+      'https://linkedin.com/company/wisetechryk',
+    ],
+  }
+
   return (
     <html lang="en" className={`${instrumentSerif.variable} ${kalam.variable} ${caveat.variable}`}>
       <head>
@@ -129,6 +175,10 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
         />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />

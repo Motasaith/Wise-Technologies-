@@ -64,20 +64,26 @@ const FloatingCode = ({ className = '' }: { className?: string }) => (
   </svg>
 )
 
+const round4 = (n: number) => Math.round(n * 10000) / 10000
+
+const gearLines = [0, 45, 90, 135, 180, 225, 270, 315].map((angle) => {
+  const rad = (angle * Math.PI) / 180
+  return {
+    angle,
+    x1: round4(20 + Math.cos(rad) * 10),
+    y1: round4(20 + Math.sin(rad) * 10),
+    x2: round4(20 + Math.cos(rad) * 14),
+    y2: round4(20 + Math.sin(rad) * 14),
+  }
+})
+
 const FloatingGear = ({ className = '' }: { className?: string }) => (
   <svg className={`w-10 h-10 ${className}`} viewBox="0 0 40 40" fill="none">
     <circle cx="20" cy="20" r="6" stroke="#4A4A4A" strokeWidth="1.5" strokeDasharray="3 2" fill="none" opacity="0.5" />
     <circle cx="20" cy="20" r="2" stroke="#4A4A4A" strokeWidth="1" fill="none" opacity="0.4" />
-    {[0, 45, 90, 135, 180, 225, 270, 315].map((angle) => {
-      const rad = (angle * Math.PI) / 180
-      const x1 = 20 + Math.cos(rad) * 10
-      const y1 = 20 + Math.sin(rad) * 10
-      const x2 = 20 + Math.cos(rad) * 14
-      const y2 = 20 + Math.sin(rad) * 14
-      return (
-        <line key={angle} x1={x1} y1={y1} x2={x2} y2={y2} stroke="#4A4A4A" strokeWidth="1.5" strokeDasharray="2 2" opacity="0.5" />
-      )
-    })}
+    {gearLines.map((l) => (
+      <line key={l.angle} x1={l.x1} y1={l.y1} x2={l.x2} y2={l.y2} stroke="#4A4A4A" strokeWidth="1.5" strokeDasharray="2 2" opacity="0.5" />
+    ))}
   </svg>
 )
 

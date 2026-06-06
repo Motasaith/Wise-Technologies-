@@ -4,6 +4,7 @@ import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { ArrowLeft, Calendar, Clock, User } from 'lucide-react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { blogPosts } from '@/src/data/blogData'
 
 /* Scribble divider */
@@ -37,8 +38,8 @@ function BlogCard({ post, index }: { post: typeof blogPosts[0]; index: number })
       style={{ boxShadow: '4px 4px 0px rgba(44,62,80,0.1)' }}
     >
       <Link href={`/blog/${post.slug}`} className="block">
-        <div className="h-48 sm:h-56 overflow-hidden">
-          <img src={post.image} alt={post.title} className="w-full h-full object-cover" />
+        <div className="h-48 sm:h-56 overflow-hidden relative">
+          <Image src={post.image} alt={post.title} width={400} height={250} className="w-full h-full object-cover" />
         </div>
         <div className="p-5 sm:p-6">
           <div className="flex flex-wrap gap-2 mb-3">

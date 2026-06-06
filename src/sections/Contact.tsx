@@ -154,7 +154,10 @@ export default function Contact() {
 
             <div className="text-center mt-8">
               <SpringyButton
-                onClick={() => {}}
+                onClick={() => {
+                  const form = document.querySelector('form')
+                  if (form) form.requestSubmit()
+                }}
                 color="#2c3e50"
                 bgColor="#ffeb3b"
                 className="transform -rotate-2"

@@ -5,6 +5,7 @@ import { useRef, useEffect, useState } from 'react'
 import { Users, Award, Briefcase } from 'lucide-react'
 import WordsPullUpMultiStyle from '../components/WordsPullUpMultiStyle'
 import ScrollReveal from '../components/ScrollReveal'
+import Image from 'next/image'
 
 function CountUp({ end, suffix = '', duration = 2 }: { end: number; suffix?: string; duration?: number }) {
   const [count, setCount] = useState(0)
@@ -13,18 +14,24 @@ function CountUp({ end, suffix = '', duration = 2 }: { end: number; suffix?: str
 
   useEffect(() => {
     if (!isInView) return
-    let start = 0
-    const increment = end / (duration * 60)
-    const timer = setInterval(() => {
-      start += increment
-      if (start >= end) {
-        setCount(end)
-        clearInterval(timer)
+    let startTime: number | null = null
+    let raf: number
+
+    const animate = (timestamp: number) => {
+      if (!startTime) startTime = timestamp
+      const progress = Math.min((timestamp - startTime) / (duration * 1000), 1)
+      // Ease-out for smoother feel
+      const eased = 1 - Math.pow(1 - progress, 3)
+      setCount(Math.floor(eased * end))
+      if (progress < 1) {
+        raf = requestAnimationFrame(animate)
       } else {
-        setCount(Math.floor(start))
+        setCount(end)
       }
-    }, 1000 / 60)
-    return () => clearInterval(timer)
+    }
+
+    raf = requestAnimationFrame(animate)
+    return () => cancelAnimationFrame(raf)
   }, [isInView, end, duration])
 
   return (
@@ -205,7 +212,7 @@ export default function About() {
                   }}
                 >
                   <Tape />
-                  <img src={p.img} alt={p.name} className="w-full h-auto grayscale" />
+                  <Image src={p.img} alt={p.name} width={180} height={180} className="w-full h-auto grayscale" />
                   <p
                     className="absolute bottom-2 left-0 w-full text-center font-bold text-sm text-[#2c3e50]"
                     style={{ fontFamily: "'Kalam', cursive" }}
