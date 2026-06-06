@@ -8,6 +8,8 @@ import type { ServiceItem } from '@/src/data/servicesData'
 import Header from '@/src/components/Header'
 import Footer from '@/src/sections/Footer'
 
+import { servicesData } from '@/src/data/servicesData'
+
 /* Scribble divider */
 const ScribbleDivider = () => (
   <svg className="w-full h-6 my-8" viewBox="0 0 800 24" preserveAspectRatio="none">
@@ -23,7 +25,10 @@ const ScribbleDivider = () => (
   </svg>
 )
 
-export default function ServiceDetail({ service }: { service: ServiceItem }) {
+export default function ServiceDetail({ slug }: { slug: string }) {
+  const service = servicesData.find((s) => s.slug === slug)
+  if (!service) return null
+
   const [openFaq, setOpenFaq] = useState<number | null>(null)
   const Icon = service.icon
 

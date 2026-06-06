@@ -7,8 +7,9 @@ export async function generateStaticParams() {
   return servicesData.map((service) => ({ slug: service.slug }))
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const service = servicesData.find((s) => s.slug === params.slug)
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params
+  const service = servicesData.find((s) => s.slug === slug)
   if (!service) return { title: 'Service Not Found' }
 
   return {
@@ -32,8 +33,9 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   }
 }
 
-export default function Service({ params }: { params: { slug: string } }) {
-  const service = servicesData.find((s) => s.slug === params.slug)
+export default async function Service({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  const service = servicesData.find((s) => s.slug === slug)
   if (!service) notFound()
 
   const serviceSchema = {
@@ -81,7 +83,7 @@ export default function Service({ params }: { params: { slug: string } }) {
         '@type': 'ListItem',
         'position': 3,
         'name': service.title,
-        'item': `https://wisetechryk.com/services/${service.slug}`,
+        item: `https://wisetechryk.com/services/${slug}`,
       },
     ],
   }
@@ -96,7 +98,7 @@ export default function Service({ params }: { params: { slug: string } }) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
-      <ServiceDetailPage service={service} />
+      <ServiceDetailPage slug={slug} />
     </div>
   )
 }
