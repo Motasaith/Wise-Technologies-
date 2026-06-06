@@ -11,7 +11,9 @@ export default function Contact() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-100px' })
   const [sent, setSent] = useState(false)
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' })
+  const [sending, setSending] = useState(false)
+  const [sendError, setSendError] = useState('')
+  const [formData, setFormData] = useState({ name: '', email: '', message: '', website: '' })
   const [errors, setErrors] = useState<Record<string, string>>({})
 
   const validateForm = () => {
@@ -23,16 +25,44 @@ export default function Contact() {
       newErrors.email = 'Please enter a valid email'
     }
     if (!formData.message.trim()) newErrors.message = 'Message is required'
+    if (formData.message.length > 5000) newErrors.message = 'Message is too long (max 5000 characters)'
     setErrors(newErrors)
     return Object.keys(newErrors).length === 0
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!validateForm()) return
-    setSent(true)
-    setFormData({ name: '', email: '', message: '' })
-    setTimeout(() => setSent(false), 5000)
+
+    setSending(true)
+    setSendError('')
+
+    try {
+      const response = await fetch('/contact-form.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          website: formData.website, // honeypot
+        }),
+      })
+
+      const data = await response.json()
+
+      if (data.success) {
+        setSent(true)
+        setFormData({ name: '', email: '', message: '', website: '' })
+        setTimeout(() => setSent(false), 5000)
+      } else {
+        setSendError(data.error || data.errors?.join(', ') || 'Failed to send message')
+      }
+    } catch (err) {
+      setSendError('Network error. Please check your connection and try again.')
+    } finally {
+      setSending(false)
+    }
   }
 
   const handleChange = (field: string, value: string) => {
@@ -44,6 +74,7 @@ export default function Contact() {
         return newErrors
       })
     }
+    setSendError('')
   }
 
   return (
@@ -152,6 +183,18 @@ export default function Contact() {
               {errors.message && <p id="message-error" className="text-red-500 text-sm mt-1" role="alert">{errors.message}</p>}
             </div>
 
+            {/* Honeypot field - hidden from humans, visible to bots */}
+            <div className="hidden" aria-hidden="true">
+              <input
+                type="text"
+                name="website"
+                tabIndex={-1}
+                autoComplete="off"
+                value={formData.website}
+                onChange={(e) => handleChange('website', e.target.value)}
+              />
+            </div>
+
             <div className="text-center mt-8">
               <SpringyButton
                 onClick={() => {
@@ -159,15 +202,22 @@ export default function Contact() {
                   if (form) form.requestSubmit()
                 }}
                 color="#2c3e50"
-                bgColor="#ffeb3b"
+                bgColor={sending ? '#cbd5e1' : '#ffeb3b'}
                 className="transform -rotate-2"
               >
-                Send it via Paper Plane!
+                {sending ? 'Sending...' : 'Send it via Paper Plane!'}
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
                 </svg>
               </SpringyButton>
             </div>
+
+            {/* Error Message */}
+            {sendError && (
+              <div className="mt-4 text-center text-red-600 bg-red-50 p-3 rounded-lg border border-red-200" role="alert">
+                <span style={{ fontFamily: "'Kalam', cursive" }}>{sendError}</span>
+              </div>
+            )}
 
             {/* Success Message */}
             {sent && (

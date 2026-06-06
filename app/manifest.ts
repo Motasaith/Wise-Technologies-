@@ -7,18 +7,30 @@ export default function manifest(): MetadataRoute.Manifest {
     description: 'Software house in Rahim Yar Khan, Pakistan. We build enterprise-grade web applications and custom software solutions.',
     start_url: '/',
     display: 'standalone',
-    background_color: '#ffffff',
+    background_color: '#F5F0E6',
     theme_color: '#2c3e50',
     icons: [
       {
-        src: '/favicon.svg',
-        sizes: 'any',
-        type: 'image/svg+xml',
+        src: '/favicon.png',
+        sizes: '64x64',
+        type: 'image/png',
       },
       {
-        src: '/logo.svg',
-        sizes: 'any',
-        type: 'image/svg+xml',
+        src: '/icon-192x192.png',
+        sizes: '192x192',
+        type: 'image/png',
+      },
+      {
+        src: '/icon-512x512.png',
+        sizes: '512x512',
+        type: 'image/png',
+        purpose: 'any',
+      },
+      {
+        src: '/maskable-icon.png',
+        sizes: '512x512',
+        type: 'image/png',
+        purpose: 'maskable',
       },
     ],
   }

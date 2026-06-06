@@ -76,12 +76,11 @@ export const metadata: Metadata = {
   verification: {
     google: 'your-google-verification-code',
   },
-  other: {
-    'geo.region': 'PK-PB',
-    'geo.placename': 'Rahim Yar Khan',
-    'geo.position': '28.4212;70.2989',
-    'ICBM': '28.4212, 70.2989',
-  },
+    icons: {
+      icon: '/favicon.png',
+      apple: '/apple-touch-icon.png',
+      shortcut: '/favicon.png',
+    },
 }
 
 export const viewport = {
