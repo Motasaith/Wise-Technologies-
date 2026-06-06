@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     images: ['/og-image.avif'],
   },
   alternates: {
-    canonical: 'https://wisetechryk.com/blog',
+    canonical: 'https://wisetechnologiesryk.com/blog',
   },
 }
 
@@ -23,12 +23,12 @@ export default function Blog() {
     '@context': 'https://schema.org',
     '@type': 'Blog',
     name: 'Wise Technologies Blog',
-    url: 'https://wisetechryk.com/blog',
+    url: 'https://wisetechnologiesryk.com/blog',
     description: 'Expert insights on AI infrastructure, local LLMs, web development, and design trends.',
     publisher: {
       '@type': 'Organization',
       name: 'Wise Technologies',
-      logo: 'https://wisetechryk.com/logo.svg',
+      logo: 'https://wisetechnologiesryk.com/logo.svg',
     },
   }
 

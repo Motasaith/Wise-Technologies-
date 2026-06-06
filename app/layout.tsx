@@ -26,31 +26,28 @@ const caveat = Caveat({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://wisetechryk.com'),
+  metadataBase: new URL('https://wisetechnologiesryk.com'),
   title: {
     default: 'Wise Technologies — A Web Solution Provider',
     template: '%s | Wise Technologies',
   },
   description: 'Wise Technologies is a software house in Rahim Yar Khan, Pakistan. We build enterprise-grade web applications, scalable digital infrastructure, and custom software solutions for modern businesses.',
   keywords: ['software house', 'web development', 'web design', 'enterprise software', 'digital solutions', 'Rahim Yar Khan', 'Pakistan', 'custom software', 'app development', 'cloud solutions'],
-  authors: [{ name: 'Wise Technologies', url: 'https://wisetechryk.com' }],
+  authors: [{ name: 'Wise Technologies', url: 'https://wisetechnologiesryk.com' }],
   creator: 'Wise Technologies',
   publisher: 'Wise Technologies',
   robots: {
-    index: true,
-    follow: true,
+    index: false,
+    follow: false,
     googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
+      index: false,
+      follow: false,
     },
   },
   openGraph: {
     type: 'website',
     locale: 'en_PK',
-    url: 'https://wisetechryk.com',
+    url: 'https://wisetechnologiesryk.com',
     siteName: 'Wise Technologies',
     title: 'Wise Technologies — A Web Solution Provider',
     description: 'We build enterprise-grade web applications and custom software solutions for modern businesses.',
@@ -71,10 +68,7 @@ export const metadata: Metadata = {
     creator: '@wisetechryk',
   },
   alternates: {
-    canonical: 'https://wisetechryk.com',
-  },
-  verification: {
-    google: 'your-google-verification-code',
+    canonical: 'https://wisetechnologiesryk.com',
   },
     icons: {
       icon: '/favicon.png',
@@ -98,8 +92,8 @@ export default function RootLayout({
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: 'Wise Technologies',
-    url: 'https://wisetechryk.com',
-    logo: 'https://wisetechryk.com/logo.svg',
+    url: 'https://wisetechnologiesryk.com',
+    logo: 'https://wisetechnologiesryk.com/logo.svg',
     description: 'Software house in Rahim Yar Khan, Pakistan. We build enterprise-grade web applications, scalable digital infrastructure, and custom software solutions.',
     address: {
       '@type': 'PostalAddress',
@@ -145,10 +139,10 @@ export default function RootLayout({
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: 'Wise Technologies',
-    url: 'https://wisetechryk.com',
+    url: 'https://wisetechnologiesryk.com',
     potentialAction: {
       '@type': 'SearchAction',
-      target: 'https://wisetechryk.com/search?q={search_term_string}',
+      target: 'https://wisetechnologiesryk.com/search?q={search_term_string}',
       'query-input': 'required name=search_term_string',
     },
   }
@@ -157,9 +151,9 @@ export default function RootLayout({
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
     name: 'Wise Technologies RYK',
-    image: 'https://wisetechryk.com/og-image.webp',
-    '@id': 'https://wisetechryk.com/#localbusiness',
-    url: 'https://wisetechryk.com',
+    image: 'https://wisetechnologiesryk.com/og-image.avif',
+    '@id': 'https://wisetechnologiesryk.com/#localbusiness',
+    url: 'https://wisetechnologiesryk.com',
     telephone: '+923000000000',
     priceRange: '$$',
     address: {

@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     images: ['/og-image.avif'],
   },
   alternates: {
-    canonical: 'https://wisetechryk.com/services',
+    canonical: 'https://wisetechnologiesryk.com/services',
   },
 }
 
@@ -26,7 +26,7 @@ export default function Services() {
     provider: {
       '@type': 'Organization',
       name: 'Wise Technologies',
-      url: 'https://wisetechryk.com',
+      url: 'https://wisetechnologiesryk.com',
     },
     areaServed: {
       '@type': 'Place',

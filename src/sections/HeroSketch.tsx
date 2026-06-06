@@ -226,7 +226,7 @@ export default function HeroSketch() {
             </span>
           </motion.div>
 
-          {/* Hand-drawn title */}
+          {/* Hand-drawn title - SEO-friendly: real text inside h1, animation on wrapper */}
           <div className="relative mb-6">
             <h1
               className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[0.95]"
@@ -235,14 +235,7 @@ export default function HeroSketch() {
                 fontFamily: "'Kalam', cursive",
               }}
             >
-              <HandwrittenText
-                text="We Build the"
-                tag="span"
-                className="block"
-                color="#2c3e50"
-                duration={50}
-                trigger="mount"
-              />
+              <span className="block">We Build the</span>
               <SketchUnderline
                 className="block mt-2"
                 color="#e74c3c"
@@ -380,7 +373,7 @@ export default function HeroSketch() {
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M18 7l-8 8-4-4" />
               </svg>
-              Since 2020
+              Since 2018
             </div>
           </motion.div>
 

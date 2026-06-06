@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       images: [post.image],
     },
     alternates: {
-      canonical: `https://wisetechryk.com/blog/${slug}`,
+      canonical: `https://wisetechnologiesryk.com/blog/${slug}`,
     },
   }
 }
@@ -54,19 +54,19 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
     author: {
       '@type': 'Organization',
       name: post.author,
-      url: 'https://wisetechryk.com',
+      url: 'https://wisetechnologiesryk.com',
     },
     publisher: {
       '@type': 'Organization',
       name: 'Wise Technologies',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://wisetechryk.com/logo.svg',
+        url: 'https://wisetechnologiesryk.com/logo.svg',
       },
     },
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': `https://wisetechryk.com/blog/${post.slug}`,
+      '@id': `https://wisetechnologiesryk.com/blog/${post.slug}`,
     },
     keywords: post.tags.join(', '),
   }
@@ -79,19 +79,19 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
         '@type': 'ListItem',
         position: 1,
         name: 'Home',
-        item: 'https://wisetechryk.com',
+        item: 'https://wisetechnologiesryk.com',
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'Blog',
-        item: 'https://wisetechryk.com/blog',
+        item: 'https://wisetechnologiesryk.com/blog',
       },
       {
         '@type': 'ListItem',
         position: 3,
         name: post.title,
-        item: `https://wisetechryk.com/blog/${slug}`,
+        item: `https://wisetechnologiesryk.com/blog/${slug}`,
       },
     ],
   }

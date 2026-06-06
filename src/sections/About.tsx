@@ -43,9 +43,9 @@ function CountUp({ end, suffix = '', duration = 2 }: { end: number; suffix?: str
 }
 
 const stats = [
-  { value: 275, suffix: '+', label: 'Projects Done', icon: Briefcase, color: 'text-primary' },
-  { value: 144, suffix: '+', label: 'Happy Clients', icon: Users, color: 'text-primary' },
-  { value: 17, suffix: '', label: 'Award Winner', icon: Award, color: 'text-primary' },
+  { value: 275, suffix: '+', label: 'Projects Delivered', icon: Briefcase, color: 'text-primary' },
+  { value: 50, suffix: '+', label: 'Happy Clients', icon: Users, color: 'text-primary' },
+  { value: 6, suffix: '', label: 'Years Experience', icon: Award, color: 'text-primary' },
 ]
 
 const teamPolaroids = [
@@ -188,7 +188,7 @@ export default function About() {
                   className="sketch-border px-4 py-2 transform rotate-2"
                   style={{ background: '#dbeafe', boxShadow: '2px 2px 0px rgba(44,62,80,0.1)' }}
                 >
-                  <span className="font-bold text-[#2c3e50]" style={{ fontFamily: "'Kalam', cursive" }}>0% Boring</span>
+                  <span className="font-bold text-[#2c3e50]" style={{ fontFamily: "'Kalam', cursive" }}>50+ Clients</span>
                 </div>
               </div>
             </div>

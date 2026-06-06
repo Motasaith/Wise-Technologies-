@@ -130,7 +130,7 @@ function Paragraph({ children, index }: { children: string; index: number }) {
 export default function BlogPostPage({ post }: { post: BlogPost }) {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-100px' })
-  const articleUrl = `https://wisetechryk.com/blog/${post.slug}`
+  const articleUrl = `https://wisetechnologiesryk.com/blog/${post.slug}`
 
   return (
     <>

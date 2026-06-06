@@ -134,6 +134,7 @@ export default function Contact() {
               </label>
               <input
                 id="contact-name"
+                name="name"
                 type="text"
                 placeholder="your name..."
                 required
@@ -152,6 +153,7 @@ export default function Contact() {
               </label>
               <input
                 id="contact-email"
+                name="email"
                 type="email"
                 placeholder="your@email.com..."
                 required
@@ -170,6 +172,7 @@ export default function Contact() {
               </label>
               <textarea
                 id="contact-message"
+                name="message"
                 rows={3}
                 placeholder="I have this awesome idea for..."
                 required

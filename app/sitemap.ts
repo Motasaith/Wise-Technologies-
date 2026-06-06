@@ -2,7 +2,7 @@ import type { MetadataRoute } from 'next'
 import { servicesData } from '@/src/data/servicesData'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://wisetechryk.com'
+  const baseUrl = 'https://wisetechnologiesryk.com'
   const staticDate = new Date('2026-06-06')
 
   const coreRoutes: MetadataRoute.Sitemap = [

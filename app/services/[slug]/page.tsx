@@ -19,16 +19,16 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       title: `${service.title} | Wise Technologies`,
       description: service.desc,
       type: 'website',
-      images: [{ url: 'https://wisetechryk.com/og-image.avif', width: 800, height: 600, alt: service.title }],
+      images: [{ url: 'https://wisetechnologiesryk.com/og-image.avif', width: 800, height: 600, alt: service.title }],
     },
     twitter: {
       card: 'summary_large_image',
       title: `${service.title} | Wise Technologies`,
       description: service.desc,
-      images: ['https://wisetechryk.com/og-image.avif'],
+      images: ['https://wisetechnologiesryk.com/og-image.avif'],
     },
     alternates: {
-      canonical: `https://wisetechryk.com/services/${service.slug}`,
+      canonical: `https://wisetechnologiesryk.com/services/${service.slug}`,
     },
   }
 }
@@ -46,7 +46,7 @@ export default async function Service({ params }: { params: Promise<{ slug: stri
     'provider': {
       '@type': 'LocalBusiness',
       'name': 'Wise Technologies RYK',
-      'url': 'https://wisetechryk.com',
+      'url': 'https://wisetechnologiesryk.com',
     },
     'areaServed': 'Global',
     'hasOfferCatalog': {
@@ -71,19 +71,19 @@ export default async function Service({ params }: { params: Promise<{ slug: stri
         '@type': 'ListItem',
         'position': 1,
         'name': 'Home',
-        'item': 'https://wisetechryk.com',
+        'item': 'https://wisetechnologiesryk.com',
       },
       {
         '@type': 'ListItem',
         'position': 2,
         'name': 'Services',
-        'item': 'https://wisetechryk.com/services',
+        'item': 'https://wisetechnologiesryk.com/services',
       },
       {
         '@type': 'ListItem',
         'position': 3,
         'name': service.title,
-        item: `https://wisetechryk.com/services/${slug}`,
+        item: `https://wisetechnologiesryk.com/services/${slug}`,
       },
     ],
   }
