@@ -212,7 +212,7 @@ export default function About() {
                   }}
                 >
                   <Tape />
-                  <Image src={p.img} alt={p.name} width={180} height={180} className="w-full h-auto grayscale" />
+                  <Image src={p.img} alt={p.name} width={180} height={180} className="w-full h-auto grayscale" loading="lazy" />
                   <p
                     className="absolute bottom-2 left-0 w-full text-center font-bold text-sm text-[#2c3e50]"
                     style={{ fontFamily: "'Kalam', cursive" }}

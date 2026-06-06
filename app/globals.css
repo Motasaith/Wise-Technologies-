@@ -347,3 +347,36 @@ body {
 .glow-coral {
   box-shadow: 0 4px 20px rgba(79, 70, 229, 0.08);
 }
+
+/* Reduced motion support — accessibility for motion-sensitive users */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .animate-float,
+  .animate-float-delayed,
+  .animate-slide-down,
+  .animate-fade-in-down,
+  .animate-pulse {
+    animation: none !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .post-it:hover,
+  .sketch-card:hover,
+  .sketch-border:hover,
+  .btn-drawn:hover::before {
+    transform: none !important;
+  }
+}

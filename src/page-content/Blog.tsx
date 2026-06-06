@@ -39,7 +39,7 @@ function BlogCard({ post, index }: { post: typeof blogPosts[0]; index: number })
     >
       <Link href={`/blog/${post.slug}`} className="block">
         <div className="h-48 sm:h-56 overflow-hidden relative">
-          <Image src={post.image} alt={post.title} width={400} height={250} className="w-full h-full object-cover" />
+          <Image src={post.image} alt={post.title} width={400} height={250} className="w-full h-full object-cover" loading="lazy" />
         </div>
         <div className="p-5 sm:p-6">
           <div className="flex flex-wrap gap-2 mb-3">
