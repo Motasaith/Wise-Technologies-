@@ -227,7 +227,7 @@ export default function ServiceDetail({ slug }: { slug: string }) {
             </p>
             <Link
               href="/#contact"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-[#e74c3c] text-white font-bold rounded-sm sketch-border-thin transition-all duration-300 hover:scale-105 hover:-translate-y-1"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-[#e74c3c] text-white font-bold rounded-sm transition-all duration-300 hover:scale-105 hover:-translate-y-1"
               style={{ fontFamily: "'Kalam', cursive" }}
             >
               Get in touch
