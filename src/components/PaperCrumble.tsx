@@ -28,11 +28,6 @@ export default function PaperCrumble({
     const container = containerRef.current
     if (!container) return
 
-    // Set initial crumpled state
-    container.style.opacity = "0"
-    container.style.transform = "scale(0.3) rotate(-15deg)"
-    container.style.transformOrigin = "center center"
-
     const runAnimation = () => {
       if (hasAnimated.current) return
       hasAnimated.current = true
@@ -63,7 +58,11 @@ export default function PaperCrumble({
   }, [duration, delay])
 
   return (
-    <div ref={containerRef} className={className}>
+    <div
+      ref={containerRef}
+      className={className}
+      style={{ opacity: 0, transform: 'scale(0.3) rotate(-15deg)', transformOrigin: 'center center' }}
+    >
       {children}
     </div>
   )

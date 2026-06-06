@@ -53,16 +53,6 @@ export default function PencilCursor({
     const dot = dotRef.current
     if (!svg || !path || !dot) return
 
-    const handleMouseMove = (e: MouseEvent) => {
-      mouseRef.current = { x: e.clientX, y: e.clientY }
-      isMovingRef.current = true
-
-      if (idleTimerRef.current) clearTimeout(idleTimerRef.current)
-      idleTimerRef.current = setTimeout(() => {
-        isMovingRef.current = false
-      }, 100)
-    }
-
     const animate = () => {
       const point = getSmoothPoint()
 
@@ -98,19 +88,44 @@ export default function PencilCursor({
           : 0
         const dynamicWidth = Math.max(0.5, strokeWidth - speed * 0.05)
         path.setAttribute("stroke-width", `${dynamicWidth}`)
+
+        // Update dot position
+        dot.setAttribute("cx", `${point.x}`)
+        dot.setAttribute("cy", `${point.y}`)
+        dot.setAttribute("r", `${Math.max(2, dynamicWidth * 1.5)}`)
+
+        // Update path opacity based on trail length
+        const opacity = Math.min(1, pts.length / (maxTrailLength * 0.6))
+        path.setAttribute("stroke-opacity", `${opacity}`)
       } else {
         path.setAttribute("d", "")
+        dot.setAttribute("r", "0")
       }
 
-      // Update dot position
-      dot.setAttribute("cx", `${mouseRef.current.x}`)
-      dot.setAttribute("cy", `${mouseRef.current.y}`)
+      // Only schedule next frame if there's activity
+      if (isMovingRef.current || pointsRef.current.length > 0) {
+        rafRef.current = requestAnimationFrame(animate)
+      } else {
+        rafRef.current = 0
+      }
+    }
 
-      rafRef.current = requestAnimationFrame(animate)
+    const handleMouseMove = (e: MouseEvent) => {
+      mouseRef.current = { x: e.clientX, y: e.clientY }
+      isMovingRef.current = true
+
+      if (idleTimerRef.current) clearTimeout(idleTimerRef.current)
+      idleTimerRef.current = setTimeout(() => {
+        isMovingRef.current = false
+      }, 100)
+
+      // Restart RAF loop if it stopped
+      if (!rafRef.current) {
+        rafRef.current = requestAnimationFrame(animate)
+      }
     }
 
     window.addEventListener("mousemove", handleMouseMove)
-    rafRef.current = requestAnimationFrame(animate)
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove)

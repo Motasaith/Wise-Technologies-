@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     description: 'We build enterprise-grade web applications and custom software solutions for modern businesses.',
     images: [
       {
-        url: '/og-image.webp',
+        url: '/og-image.avif',
         width: 1200,
         height: 630,
         alt: 'Wise Technologies — Software House in Rahim Yar Khan',
@@ -67,7 +67,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Wise Technologies — A Web Solution Provider',
     description: 'We build enterprise-grade web applications and custom software solutions.',
-    images: ['/og-image.webp'],
+    images: ['/og-image.avif'],
     creator: '@wisetechryk',
   },
   alternates: {
@@ -82,6 +82,12 @@ export const metadata: Metadata = {
     'geo.position': '28.4212;70.2989',
     'ICBM': '28.4212, 70.2989',
   },
+}
+
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
 }
 
 export default function RootLayout({
@@ -110,7 +116,30 @@ export default function RootLayout({
     sameAs: [
       'https://twitter.com/wisetechryk',
       'https://linkedin.com/company/wisetechryk',
+      'https://www.facebook.com/wise.technologiez/',
     ],
+    knowsAbout: [
+      'Web Development',
+      'Software Engineering',
+      'Cloud Solutions',
+      'AI Integration',
+      'Mobile App Development',
+      'SEO Services',
+      'Cybersecurity',
+      'Digital Marketing',
+    ],
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'Web Solutions',
+      itemListElement: [
+        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Web Development' } },
+        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'SEO Services' } },
+        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'AI Integration' } },
+        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Cloud Solutions' } },
+        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'App Development' } },
+        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Cybersecurity' } },
+      ],
+    },
   }
 
   const websiteSchema = {

@@ -19,13 +19,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       title: `${service.title} | Wise Technologies`,
       description: service.desc,
       type: 'website',
-      images: [{ url: 'https://wisetechryk.com/og-image.webp', width: 800, height: 600, alt: service.title }],
+      images: [{ url: 'https://wisetechryk.com/og-image.avif', width: 800, height: 600, alt: service.title }],
     },
     twitter: {
       card: 'summary_large_image',
       title: `${service.title} | Wise Technologies`,
       description: service.desc,
-      images: ['https://wisetechryk.com/og-image.webp'],
+      images: ['https://wisetechryk.com/og-image.avif'],
     },
     alternates: {
       canonical: `https://wisetechryk.com/services/${service.slug}`,

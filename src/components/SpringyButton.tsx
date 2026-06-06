@@ -3,6 +3,7 @@
 
 import { useEffect, useRef } from "react"
 import { animate, createSpring } from "animejs"
+import Link from "next/link"
 
 interface SpringyButtonProps {
   children: React.ReactNode
@@ -95,7 +96,7 @@ export default function SpringyButton({
 
     if (href) {
     return (
-      <a
+      <Link
         ref={buttonRef as any}
         href={href}
         className={baseClasses}
@@ -103,7 +104,7 @@ export default function SpringyButton({
         onClick={onClick}
       >
         {children}
-      </a>
+      </Link>
     )
   }
 

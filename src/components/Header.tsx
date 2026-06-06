@@ -28,7 +28,11 @@ export default function Header() {
   }, [])
 
   const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    if (!isHome) return
+    if (!isHome) {
+      // On non-home pages, let Next.js handle navigation normally
+      // The Link component will navigate to the page with the hash
+      return
+    }
     e.preventDefault()
     const id = href.split('#')[1]
     if (id) {

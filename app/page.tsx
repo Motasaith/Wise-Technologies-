@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Wise Technologies — A Web Solution Provider',
     description: 'We build the Digital Future. Enterprise software, web apps, and cloud solutions.',
-    images: ['/og-image.webp'],
+    images: ['/og-image.avif'],
   },
 }
 

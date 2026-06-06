@@ -7,8 +7,9 @@ export async function generateStaticParams() {
   return getAllSlugs().map((slug) => ({ slug }))
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const post = getPostBySlug(params.slug)
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params
+  const post = getPostBySlug(slug)
   if (!post) return { title: 'Post Not Found' }
 
   return {
@@ -32,13 +33,14 @@ export async function generateMetadata({ params }: { params: { slug: string } })
       images: [post.image],
     },
     alternates: {
-      canonical: `https://wisetechryk.com/blog/${post.slug}`,
+      canonical: `https://wisetechryk.com/blog/${slug}`,
     },
   }
 }
 
-export default function BlogPost({ params }: { params: { slug: string } }) {
-  const post = getPostBySlug(params.slug)
+export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  const post = getPostBySlug(slug)
   if (!post) notFound()
 
   const articleSchema = {
@@ -89,7 +91,7 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
         '@type': 'ListItem',
         position: 3,
         name: post.title,
-        item: `https://wisetechryk.com/blog/${post.slug}`,
+        item: `https://wisetechryk.com/blog/${slug}`,
       },
     ],
   }
